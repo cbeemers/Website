@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="money.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+        <script type='module' src="money.js"></script>
+        <script type='module' src="hours.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <div class ='main-container'>
+            <header class='main-header background'>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../main.html">HOME</a></li>
+                        <li><a href="../games/games.html">GAMES</a></li>
+                    </ul>
+                </nav>
+                <h1>Money Tracking</h1>
+                <p class='descript'>
+                    Here is an excel sheet that I maintained over a previous summer, tracking all of the money 
+                    I made working at a restaurant. Here I plan to graph and utilize this data to be 
+                    displayed/styled and tracked through Javascript. So far, this part of the website is very new
+                    and has not been worked on enough to call it an even close to finished product. 
+                </p>
+            </header>
+            <div class='menu'>
+                <!-- <div class='dropdown'> -->
+                <ul class='list'>
+                    <li class='money-dropdown'>
+                        <h1 class='money'>Money</h1>
+                        <div class='dropdown-cont'>
+                            <div class='days'>
+                                <button class='day'>Days</button>
+                                <ul class='money-sub-menu sub-menu'>
+                                    <li><button id='monday'>Monday</button></li>
+                                    <li><button id='tuesday'>Tuesday</button></li>
+                                    <li><button id='wednesday'>Wednesday</button></li>
+                                    <li><button id='thursday'>Thursday</button></li>
+                                    <li><button id='friday'>Friday</button></li>
+                                    <li><button id='saturday'>Saturday</button></li>
+                                    <li><button id='sunday'>Sunday</button></li>
+                                </ul>
+                            </div>
+
+                            <button id='tips-week'>Tips/Week</button>
+                            <button id='total-money'>Total/Week</button>
+                        </div>
+                    </li>
+                    <li class='hours-dropdown'>
+                        <h1>Hours</h1>
+                        <div class='dropdown-cont'>
+                            <button class='day'>Days</button>
+                                <ul class='hours-sub-menu sub-menu'>
+                                    <li><button id='monday'>Monday</button></li>
+                                    <li><button id='tuesday'>Tuesday</button></li>
+                                    <li><button id='wednesday'>Wednesday</button></li>
+                                    <li><button id='thursday'>Thursday</button></li>
+                                    <li><button id='friday'>Friday</button></li>
+                                    <li><button id='saturday'>Saturday</button></li>
+                                    <li><button id='sunday'>Sunday</button></li>
+                                </ul>
+                            <button id='hours-week'>Hours/Week</button>
+                            <button id='total-hours'>Total</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id='graphs'>
+                <canvas id="canvas"></canvas>
+                <!-- <div class='total'>
+                    <button>Total</button>
+                    <button>Average</button>
+                </div> -->
+
+                <!-- <div class='total'>
+                    <canvas id='hours'></canvas>
+                </div> -->
+            </div>
+
+            <script type='module'>
+                import { getMoney, total, perDay, weekly } from './money.js';
+
+                $(function() {
+                    $('.day').on('click', function() {
+                        $('.sub-menu').toggle();
+                    });
+                    $('.money-sub-menu').on('click', 'button', function(event){
+                        reset();
+                        perDay(event.target.id);
+                    });
+                });
+                
+                $(function() {
+                    $('#tips-week').on('click', function () {
+                        reset();
+                        getMoney();
+                        total();
+                        // $('#tips').toggle();
+                    });
+                });
+
+                $(function () {
+                    $('#total-money').on('click', function() {
+                        reset();
+                        getMoney();
+                        weekly();
+                    });
+                });
+                
+                function reset() {
+                    $('#canvas').remove();
+                    $('#graphs').append('<canvas id="canvas"><canvas>');
+                }
+            
+            </script>
+            <script type='module'>
+                import { getHours, totalHours, perDay } from './hours.js';
+                $(function() {
+                    $('#hours-week').on('click', function() {
+                        reset();
+                        getHours();
+                        totalHours();
+                    });
+                });
+
+                $(function() {
+                    $('.hours-sub-menu').on('click', 'button', function(event){
+                        reset();
+                        perDay(event.target.id);
+                    });
+                });
+
+                function reset() {
+                    $('#canvas').remove();
+                    $('#graphs').append('<canvas id="canvas"><canvas>');
+                }
+
+            </script>
+        </div>
+        <footer class='footer'>
+            <div class='sheets'>
+                <a href="https://docs.google.com/spreadsheets/d/1iuxVyXM41UjVi6HW4tQ3UZwvFXQVsgkW4y2SyNy5UWM/edit?usp=sharing" target='blank'>
+                <h3>Excel Sheet</h3>
+                </a>
+            </div>
+
+        </footer>
+    </body>
+</html>

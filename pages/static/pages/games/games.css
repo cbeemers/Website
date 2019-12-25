@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.descript {
+    padding: 0 50px 20px 50px;
+}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    text-align: center;
+    color: white;
+}
+
+/* .footer {
+    
+    height: 150px;
+    text-align: center;
+    color: white;
+
+} */
+
+.footer {
+    color: white;
+    position: absolute;
+    background: #9098B6;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    min-height: 100px;
+    max-height: 100%;
+}
+
+.footer h1 {
+    padding-top: 10px;
+    margin: 0;
+    font-size: 14px;
+}
+
+.games {
+    display: flex;
+    flex-direction: row; 
+    background-image: url("images/background.png");
+    /* background-repeat: no-repeat; */
+    min-height: 300px;
+    border-bottom: 3px solid black;
+    
+}
+
+.games div {
+    padding: 20px;
+    margin: auto;
+    
+}
+
+.games img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    height: 100px;
+
+}
+
+.games img:hover {
+    background-color: rgba(43, 230, 105, 0.884);
+    /* opacity: .5; */
+}
+
+header{
+    background-color: rgba(206, 84, 84);
+    background-image: url("../images/background.jpeg");
+    background-blend-mode: multiply;
+    padding-bottom: 20px;
+}
+
+.main-container {
+    min-height: 100vh; /* will cover the 100% of viewport */
+    overflow: hidden;
+    display: block;
+    position: relative;
+    /* padding-bottom: 100px;  */
+}
+
+.main-header {
+    margin: 0;
+    border-bottom: 3px solid black;
+    min-height: 350px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+
+.main-header a {
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.main-header a:hover {
+    opacity: .5;
+    font-size: 24px;
+}
+
+.main-header ul {
+    margin: 0; 
+    padding: 20px 0 20px 0;
+}
+
+.main-header li{
+    padding: 20px;
+    display: inline;
+    
+    
+}
+
+.main-header h1 {
+    text-align: center;
+    color: white;
+    font-size: 56px;
+
+}
+
+nav {
+    text-align: center;
+}
+
+
+
+/* nav a:hover {
+    background-color: rgba(255, 255, 255, .3);
+} */
+
+
+/* a {
+    text-decoration: none;
+} */
+
+/* a:hover {
+    text-decoration: underline;
+    background-color: rgba(26, 6, 6, 0.089);
+} */
+
+/* .center {
+    text-align: center;
+} */
+
+/* img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    height: 100px;
+  }
+  
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+html, body{
+    margin:0;
+    padding: 0;
+} */
+

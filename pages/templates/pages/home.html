@@ -14,13 +14,13 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="../index.html">Welcome</a>
+                            <a href="{% url 'welcome-view' %}" >Welcome</a>
                         </li>
                         <li>
-                            <a href="games/games.html">Games</a>
+                            <a href="{% url 'games-view' %}">Games</a>
                         </li>
                         <li>
-                            <a href="money/money.html">Money</a>
+                            <a href="{% url 'money-view' %}">Money</a>
                         </li>
                         <li><a href="versions/versions.html">Versions</a></li>
                     </ul>
@@ -85,6 +85,7 @@
                             <span>Experience parsing and reading files to display and use data in a relevant way. Create an input driven
                                 GUI that prompts user for next command and executes accordingly, including proper error checking.
                                 <br> Used classes and algorithms in class methods to implement and better my understanding of data structures. 
+                                <br> Worked with Django framework to create a live server my website can run off of.
                                 <br> Classes Taken: CSE 231 -- Introduction to Programming; CSE 331 -- Data Structures and Algorithms
                             </span>
                         </div>

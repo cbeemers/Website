@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+        {% load static %}
+		<head>
+            <link rel="stylesheet" href="{% static 'pages/games/games.css' %}" type=text/css>
+		</head>
+
+		<body>
+            <div class='main-container'>  
+                <header class='main-header'>
+                    <nav>
+                        <ul>
+                            <li><a href="{% url 'home-view' %}">HOME</a></li>
+                            <li><a href="../money/money.html">Money</a></li>
+                        </ul>
+                    </nav>
+                    <h1>GAMES</h1>
+                    <p class='descript'>Some games that I wrote using JS canvas. These games were my first time using 
+                        JS Canvas and a few of my first JS programs. 
+                        They are displayed in the order I created them; brick break has some minor flaws in 
+                        collision response to bricks but has more styling than snake which has next to none. Snake
+                        also has some sizing errors, with the bottom edge not quite to scale with the snake.
+                        I began space invaders but to this point have left it unfinished to work on more aspects
+                        of my overall website.
+                    </p>
+                </header>
+                <div class='games'>
+                    <div>
+                        <figure>
+                            <a href="brickBreak/brickBreak.html">
+                                <img src="images/brickBreak.png" alt="Brick Break">
+                            </a>
+                            <figcaption>Brick Break!</figcaption>
+                        </figure>
+
+                    </div>
+                    <div>
+                        <figure>
+                            <a href="snake/snake.html">
+                                <img src="images/snake.png" alt="Snake">
+                            </a>
+                            <figcaption>Snake</figcaption>
+                        </figure>
+
+                    </div>
+                    <div>
+                        <figure>
+                            <a href="spaceInvaders/spaceInvaders.html">
+                                <img src="images/spaceInvaders.png" alt="Space Invaders">
+                            </a>
+                            <figcaption>Space Invaders(unfinished)</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class='footer'>
+                    <h1>fuck</h1>
+                </div>
+            </div>
+		</body>
+</html>

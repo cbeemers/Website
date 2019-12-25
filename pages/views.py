@@ -13,3 +13,11 @@ def welcome_view(request):
 
     }
     return render(request, 'pages/welcome.html', context)
+
+def games_view(request):
+    context = {}
+    return render(request, 'pages/games.html', context)
+
+def money_view(request):
+    context = {}
+    return render(request, 'pages/money.html', context)
