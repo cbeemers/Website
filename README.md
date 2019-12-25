@@ -1,6 +1,6 @@
 # Website
 Resume website
 
-christopherbeeman@pythonanywhere.com
+christopherbeeman.pythonanywhere.com
 
 My first attempt at a full stack website
