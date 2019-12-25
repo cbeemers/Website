@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+
+<html>
+		<head>
+            {% load static %}
+            <link rel="stylesheet" href="{% static 'pages/main.css' %}" type=text/css>
+            <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+		</head>
+
+		<body>
+            <header class='main-header background'>
+                <!-- <canvas></canvas> -->
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="../index.html">Welcome</a>
+                        </li>
+                        <li>
+                            <a href="games/games.html">Games</a>
+                        </li>
+                        <li>
+                            <a href="money/money.html">Money</a>
+                        </li>
+                        <li><a href="versions/versions.html">Versions</a></li>
+                    </ul>
+                </nav>                
+                <div class='title'>
+                    <h1>Christopher Beeman</h1>
+                    <h3>Michigan State Class of 2021</h3>
+                </div>
+                
+
+                <!-- <script src='canvas.js'></script> -->
+            </header>
+            
+            <section class='section'>
+                <div class='about'>
+                    <header class='header'>About Me</header>
+                    <article class='me'>
+                        <p>My name is Christopher Beeman and I am currently a junior (4th year) computer science major at Michigan State
+                                University. Originally a mechanical engineering major, I was required to take a programming class my
+                                sophomore year that I ended up dedicating all my time to because of my desire to keep learning new concepts. 
+                                My long-term goal is to become a self-sufficient programmer. I mainly want to work with interactive user interfaces with
+                                this website as my first attempt and first project done outside of a curriculum, while also serving as a resume. 
+                                I have taken courses teaching Python, C++, and some basic C, but I began learning HTML, JavaScript, and 
+                                CSS over this past summer. Most of what I have programmed in JS and HTML are shown on display here. One thing 
+                                I would like to add is an email form that will allow a visitor to contact me through the website and an 
+                                account system. My next plan to further develop this website and my web development knowledge will be learning django
+                                so i can create my own server and have this website be accessible on the internet.
+                        </p>
+                        <figure class='git'>
+                            <a href="https://github.com/cbeemers" target='_blank'>
+                                <img src="{% static 'img/github.png' %}" alt="">
+                            </a>
+                            <figcaption>Link to my GitHub profile: cbeemers</figcaption>
+                        </figure>
+                    </article>
+                    <aside class="aside aside-1" style='color: rgb(18, 46, 18)'>1</aside>
+                    <aside class="aside aside-2" style='color: rgb(67, 68, 67)'>2</aside>
+                </div>
+            </section>
+            
+            <section class='section'>
+                <div class='skills'>  
+                    <header class='header'>My Skills</header>
+                    <div class='lang'>
+                        <div class='lang-align'>
+                            <img src="{% static 'img/c++.png' %}" alt="C++"> 
+                            <span>Experience with multiple classes working to make a single project. Knowledge of using abstract 
+                                classes to create objects of type class that inherit traits and functions common to other objects derived
+                                from the base. 
+                                <br> Experience creating a GUI with handler events that range in capabilities from drawing content to the window 
+                                to opening and saving files. 
+                                <br> Classes taken involving C++: CSE 232 -- Introduction to Programming 2; CSE 335 -- Software Design
+                                <br> Also minor experience with C, taking in command line arguments and creating a shell.
+                                <br> Classes Taken: CSE 325 -- Computer Hardware; CSE 320 -- Computer Organization and Architecture
+                            </span>
+                        </div>
+                        
+                    </div>
+                    <div class='lang'>
+                        <div class='lang-align'>
+                            <img src="{% static './img/python.png' %}" alt="python">
+                            <span>Experience parsing and reading files to display and use data in a relevant way. Create an input driven
+                                GUI that prompts user for next command and executes accordingly, including proper error checking.
+                                <br> Used classes and algorithms in class methods to implement and better my understanding of data structures. 
+                                <br> Classes Taken: CSE 231 -- Introduction to Programming; CSE 331 -- Data Structures and Algorithms
+                            </span>
+                        </div>
+                    </div>
+                    <div class='lang'>
+                        <div class='lang-align'>
+                            <img src="{% static './img/html.png' %}" alt="html">
+                            <span>Experience creating a web user layout that effectively and creatively displays content.
+                                Have used many different files to create a full website that includes multiple pages, interactive
+                                functions that integrate JavaScript, links that navigate away from the page, etc. 
+                                <br> Most of my HTML knowledge is on display here; over the summer of 2019 I took it upon myself to learn
+                                new concepts and in the process started this project.
+                                <br> Classes Going to Take: CSE 477 -- Web Development
+                            </span>
+                        </div>
+                    </div>
+                    <div class='lang last'>
+                        <div class='lang-align'>
+                            <img src="{% static 'img/js.png' %}" alt="JavaScript">
+                            <span>Another language that I began learning outside of my degree requirements.
+                                Experience drawing elements to canvas and creating interactions between the user and those
+                                elements. Used a time interval or an animation frame to create a constantly updating canvas that
+                                draws and redraws elements in real time. 
+                                <br> Have used a few different JS modules to help create a more dynamic webpage. Very minor knowledge of 
+                                jquery to help add functionality to my pages, more limited knowledge of express to create a local server my
+                                webpage can run on.
+                            </span>
+                        </div>
+                    </div>
+                </div>    
+            </section>
+
+            <header class='header'>Contact Me</header>
+            <div class='contact'>
+                <div class='submission'> <input type="text" class='email' value='Subject'> </div>
+                <div class='submission'> <input type="text" class='email' value='Your Email'> </div>
+                <div class='submission'> <input type="text" class='email email-content' value='Leave me a message!'> </div>
+            </div>
+            
+            <footer class='footer'>
+
+                <h1>beemanch@msu.edu</h1>
+                <h1>cbeems13@gmail.com</h1>
+                <a href="https://twitter.com/ChrisBeeman12" target="_blank">
+                    <img src="{% static 'img/twitter.png' %}" alt="twitter">
+                </a>
+                <a href="https://www.instagram.com/beemanchris/" target="_blank">
+                    <img src="{% static 'img/instagram.jpeg' %}" alt="instagram">
+                </a>
+                <a href="https://www.facebook.com/christopher.beeman.5" target='_blank'>
+                    <img src="{% static 'img/facebook.png' %}" alt="facebook">
+                </a>
+                <a href="https://www.linkedin.com/in/christopher-beeman-506711187">
+                    <img src="{% static 'img/linked.png' %}" alt="Linked-in">
+                </a>
+            </footer>
+		</body>
+</html>

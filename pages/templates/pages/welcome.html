@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+		<head>
+			{% load static %}
+			<link rel="stylesheet" href="{% static 'pages/welcome/welcome.css' %}" type=text/css>	
+			<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+		</head>
+
+		<body>
+			<!-- <div class='box'>
+
+			</div> -->
+			
+			<canvas id='canvas'></canvas>
+			<script src="{% static 'pages/welcome/canvas.js' %}"></script>
+			<!-- <center> -->
+			<div class='main'>
+				<div class='nav'>
+					<h1>Christopher Beeman</h1>
+					<h2 class='welcome'>Welcome to my website!</h2>
+					<p class='about'>I have created this website to help display skills that I have learned
+						outside of my CSE degree requirements. I am pursing a career as a web developer and 
+						have started using the summer of 2019 to learn new valuable practices.
+					</p>
+					<div class='website'><a href="{% url 'home-view' %}" class='button'>My Website</a></div>
+					
+				</div>
+
+					
+
+				
+			</div>
+			<!-- </center> -->
+
+
+            	
+		</body>
+</html>
