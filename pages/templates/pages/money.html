@@ -2,13 +2,13 @@
 
 <html>
     <head>
-        
+        {% load static %}
         <meta charset="UTF-8" />
-        <link rel="stylesheet" href="money.css">
+        <link rel="stylesheet" href="{% static 'pages/money/money.css' %}">
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
-        <script type='module' src="money.js"></script>
-        <script type='module' src="hours.js"></script>
+        <script type='module' src="{% static 'pages/money/money.js' %}"></script>
+        <script type='module' src="{% static 'pages/money/hours.js' %}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
 
@@ -84,7 +84,7 @@
             </div>
 
             <script type='module'>
-                import { getMoney, total, perDay, weekly } from './money.js';
+                import { getMoney, total, perDay, weekly } from "{% static 'pages/money/money.js' %}";
 
                 $(function() {
                     $('.day').on('click', function() {
@@ -120,7 +120,7 @@
             
             </script>
             <script type='module'>
-                import { getHours, totalHours, perDay } from './hours.js';
+                import { getHours, totalHours, perDay } from "{% static 'pages/money/hours.js' %}";
                 $(function() {
                     $('#hours-week').on('click', function() {
                         reset();

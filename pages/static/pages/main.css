@@ -73,7 +73,7 @@ body {
     background-position: 50% 50%;
     height: 800px;
 
-    image-rendering: pixelated;
+    /* image-rendering: pixelated; */
 
 }
 
@@ -90,12 +90,20 @@ body {
 
 .contact {
     /* display:; */
-    padding-top: 100px;
-    padding-left: 50px;
+    /* display: center; */
+    /* padding-left: 50px; */
+    padding-top: 50px;
     position: relative;
-    /* left: 43%; */
+    /* left: 30%; */
     min-height: 400px;
     background: white;
+    border-bottom: solid black 2px;
+}
+
+.contact button {
+    width: 100px;
+    height: 50px;
+    border-radius: 10%
 }
 
 .email {

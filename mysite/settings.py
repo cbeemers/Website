@@ -25,7 +25,7 @@ SECRET_KEY = '-_%!gdus%#q3nd+!$rw#llc1(@a%*w)fyi&s_s-7ej!)^_bq=*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['christopherbeeman.pythonanywhere.com']
+ALLOWED_HOSTS = ['christopherbeeman.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -121,7 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static/'),
+    os.path.join(BASE_DIR, 'static'),
 )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
