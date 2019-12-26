@@ -11,7 +11,7 @@
 		<body>
             <header class='main-header background'>
                 <!-- <canvas></canvas> -->
-                <nav>
+                <nav class='main-nav'>
                     <ul>
                         <li>
                             <a href="{% url 'welcome-view' %}" >Welcome</a>
@@ -74,7 +74,7 @@
                                 to opening and saving files. 
                                 <br> Classes taken involving C++: CSE 232 -- Introduction to Programming 2; CSE 335 -- Software Design
                                 <br> Also minor experience with C, taking in command line arguments and creating a shell.
-                                <br> Classes Taken: CSE 325 -- Computer Hardware; CSE 320 -- Computer Organization and Architecture
+                                <br> <bold>Classes Taken:</bold> CSE 325 -- Computer Hardware; CSE 320 -- Computer Organization and Architecture
                             </span>
                         </div>
                         
@@ -117,29 +117,12 @@
                     </div>
                 </div>    
             </section>
-
-            <header class='header'>Contact Me</header>
-            <div class='contact'>
-            <!-- <div> -->
-                <!-- <div class='submission'> <input type="text" class='email' value='Subject'> </div>
-                <div class='submission'> <input type="text" class='email' value='Your Email'> </div>
-                <div class='submission'> <input type="text" class='email email-content' value='Leave me a message!'> </div> -->
-                <center>
-                    {% block content %}
-                    <form action="" method="POST" role="form">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit">Send</button>
-                    </form>
-                    {% endblock %}
-                </center>
-
-            </div>
             
             <footer class='footer'>
 
                 <h1>beemanch@msu.edu</h1>
                 <h1>cbeems13@gmail.com</h1>
+                <a class='contact-link' href="{% url 'contact-view' %}"><h1>Contact Me</h1></a>
                 <a href="https://twitter.com/ChrisBeeman12" target="_blank">
                     <img src="{% static 'pages/img/twitter.png' %}" alt="twitter">
                 </a>

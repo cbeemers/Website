@@ -89,21 +89,27 @@ body {
 }
 
 .contact {
-    /* display:; */
-    /* display: center; */
-    /* padding-left: 50px; */
     padding-top: 50px;
     position: relative;
-    /* left: 30%; */
     min-height: 400px;
     background: white;
-    border-bottom: solid black 2px;
 }
 
 .contact button {
     width: 100px;
     height: 50px;
     border-radius: 10%
+}
+
+.contact-header {
+
+    width: 100%;
+    color: white;
+    text-align: center;
+    background: #388CD2;
+    font-size: 32px;
+    min-height: 200px;
+    padding-bottom: 20px;
 }
 
 .email {
@@ -131,6 +137,17 @@ figcaption {
     padding-bottom: 20px;
     padding-top: 10px;
     /* z-index: 1; */
+}
+
+.footer .contact-link {
+    text-decoration: none;
+    display: center;
+    color: white;
+
+}
+
+.footer .contact-link:hover {
+    color: #cccccc;
 }
 
 .footer h1 {
@@ -205,33 +222,37 @@ figcaption {
 
     border-bottom: black 3px solid;
     margin: 0;
-    height: 800px;
+    min-height: 800px;
     font-size: 20px;
 
     /* opacity: .5; */
 }
 
-.main-header a {
+.main-nav {
+    color:white;
+}
+
+.main-nav a {
     color: white;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 20px;
 }
 
-.main-header a:hover {
+.main-nav a:hover {
     color: #cccccc;
     font-size: 24px;
     /* font-weight: bold; */
 
 }
 
-.main-header nav a {
+.main-nav a {
     padding-top: 20px;
     padding-bottom: 20px;
     display: inline-block;
 }
 
-.main-header ul {
+.main-nav ul {
     margin: 0;
     /* padding-bottom: 20px; */
     padding-left: 0;
@@ -279,6 +300,11 @@ figcaption {
 .me p {
     padding: 50px 10px 0 10px;
     margin: 0;
+}
+
+.messages {
+    list-style: none;
+    padding: 0;
 }
 
 nav {

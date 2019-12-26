@@ -21,13 +21,15 @@ from pages.views import (
     welcome_view,
     games_view,
     money_view,
+    contact_view,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', welcome_view, name='welcome-view'),
-    path('home', home_view, name='home-view'),
-    path('games', games_view, name ='games-view'),
-    path('money', money_view, name='money-view')
+    path('home/', home_view, name='home-view'),
+    path('games/', games_view, name ='games-view'),
+    path('money/', money_view, name='money-view'),
+    path('contact/', contact_view, name='contact-view'),
 
 ]
