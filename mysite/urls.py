@@ -22,6 +22,8 @@ from pages.views import (
     games_view,
     money_view,
     contact_view,
+    snake_view,
+    brickbreak_view,
 )
 
 urlpatterns = [
@@ -29,6 +31,8 @@ urlpatterns = [
     path('', welcome_view, name='welcome-view'),
     path('home/', home_view, name='home-view'),
     path('games/', games_view, name ='games-view'),
+    path('games/brickbreak', brickbreak_view, name='brickbreak-view'),
+    path('games/snake', snake_view, name='snake-view'),
     path('money/', money_view, name='money-view'),
     path('contact/', contact_view, name='contact-view'),
 

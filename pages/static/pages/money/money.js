@@ -27,7 +27,7 @@ for (let i=0; i < week.length; i++){
 
 
 async function getMoney() {
-    const response = await fetch('2018/money.csv');
+    const response = await fetch("2018/money.csv");
     const data = await response.text();
 
     const rows = data.split('\n').splice(1);

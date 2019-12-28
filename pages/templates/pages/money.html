@@ -4,7 +4,7 @@
     <head>
         {% load static %}
         <meta charset="UTF-8" />
-        <link rel="stylesheet" href="{% static 'pages/money/money.css' %}">
+        <link rel="stylesheet" href="{% static 'pages/money/money.css' %}?">
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
         <script type='module' src="{% static 'pages/money/money.js' %}"></script>
@@ -17,8 +17,8 @@
             <header class='main-header background'>
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="../main.html">HOME</a></li>
-                        <li><a href="../games/games.html">GAMES</a></li>
+                        <li><a href="{% url 'home-view' %}">HOME</a></li>
+                        <li><a href="{% url 'games-view' %}">GAMES</a></li>
                     </ul>
                 </nav>
                 <h1>Money Tracking</h1>
@@ -124,7 +124,7 @@
                 $(function() {
                     $('#hours-week').on('click', function() {
                         reset();
-                        getHours();
+                        getHours("{% static 'pages/money/2019/hours.csv' %}");
                         totalHours();
                     });
                 });

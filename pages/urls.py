@@ -2,6 +2,8 @@ from django.urls import path
 from .views import (
     home_view,
     welcome_view,
+    snake_view,
+    brickbreak_view,
 )
 
 app_name = 'pages'

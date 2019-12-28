@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import ContactForm
 from django.template.loader import get_template
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, send_mail
 from django.contrib import messages
 
 # Create your views here.
@@ -31,10 +31,18 @@ def money_view(request):
 def email_view(request):
     return
 
+def snake_view(request):
+    context = {}
+    return render(request, 'pages/games/snake.html', context)
+
+def brickbreak_view(request):
+    context = {}
+    return render(request, 'pages/games/brickbreak.html', context)
+
 def contact_view(request):
-    form_class = ContactForm(request.POST or None)
+    form = ContactForm(request.POST or None)
     context = {
-        'form' : form_class
+        'form' : form
     }
 
     if request.method == 'POST':
@@ -42,24 +50,15 @@ def contact_view(request):
         contact_email = request.POST.get('return_address', '')
         content = request.POST.get('content', '')
 
-        template = get_template('pages/contact_template.txt')
-
-        context = {
-            'subject': subject, 
-            'return_address' : contact_email,
-            'content' : content,
-            }
-        content_template = template.render(context)
-        email = EmailMessage(
-            "New contact form submission",
+        send_mail(
+            subject,
             content,
-            "Your website" + '',
+            contact_email,
             ['cbeems13@gmail.com'],
-            headers = {'Reply-To': contact_email}
+            fail_silently=False,
         )
-        email.send()
-        if form_class.is_valid():
-            form_class.save()
+        if form.is_valid():
+            form.save()
         messages.info(request, 'Message Sent!')
 
-    return render(request, 'pages/contact.html', { 'form' : form_class })
+    return render(request, 'pages/contact.html', context)
