@@ -16,8 +16,33 @@ const LEVEL1 = [
     [1,1,1,1,1,1,1,1,1,1]
 ];
 
+window.addEventListener('keydown', move = (event) => {
+    switch(event.keyCode){
+        case 16:
+            game.start();
+            break;
+        case 32:
+            game.paddle.stop();
+            break;
+        case 37:
+            game.paddle.moveLeft(game);
+            break;
+        case 39:
+            game.paddle.moveRight(game);    
+            break;
+        case 80:
+            game.pauseGame();
+            break;
+        case 81:
+            game.restart();
+            break;
+    }
+    event.preventDefault();
+});
+
 
 function Ball(x, y) {
+    
     this.position = {
         x: x,
         y: y        
@@ -172,7 +197,7 @@ function Brick(x, y) {
         y: y
     };
     this.image = new Image();
-    this.image.src = "images/brick.png"
+    this.image.src = brick;
     this.width = innerWidth / 10;
     this.height = 52;
     this.deleted = false;
@@ -194,31 +219,6 @@ function Brick(x, y) {
         }
     }
 }
-
-window.addEventListener('keydown', move = (event) => {
-    switch(event.keyCode){
-        case 16:
-            game.start();
-            break;
-        case 32:
-            game.paddle.stop();
-            break;
-        case 37:
-            game.paddle.moveLeft(game);
-            break;
-        case 39:
-            game.paddle.moveRight(game);    
-            break;
-        case 80:
-            game.pauseGame();
-            break;
-        case 81:
-            game.restart();
-            break;
-    }
-    event.preventDefault();
-});
-
 
 class Game {
     constructor(level) {
@@ -291,11 +291,11 @@ class Game {
             }else {
                 if (this.lives == 0){
                     let img = new Image();
-                    img.src = 'images/gameOver.png'
+                    img.src = gameover;
                     ctx.drawImage(img, 0, 0, img.width,img.height, 0, 0, innerWidth, innerHeight);
                 }else if (this.count == 0){
                     let img = new Image();
-                    img.src = 'images/victory.png'
+                    img.src = victory
                     ctx.drawImage(img, 0, 0, img.width,img.height, 0, 0, innerWidth, innerHeight);
                 }
                 
@@ -321,7 +321,7 @@ class Game {
             }
         }else {
             let img = new Image();
-            img.src = 'images/screen.png'
+            img.src = screen;
             ctx.drawImage(img, 0, 0, img.width,img.height, 0, 0, innerWidth, innerHeight);
 
             ctx.font = "30px Arial";

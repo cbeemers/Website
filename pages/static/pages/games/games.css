@@ -6,7 +6,7 @@
     background: url("images/curtain.jpg");
     background-size: cover;
     background-position: 50% 50%;
-    height: 400px;
+    min-height: 400px;
 
 }
 
@@ -93,6 +93,7 @@ header{
     background-position: 50% 50%;
     background-blend-mode: multiply;
     padding-bottom: 20px;
+    min-height: 50%;
 }
 
 .main-container {

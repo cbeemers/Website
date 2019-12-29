@@ -20,8 +20,8 @@ for (let i=0; i < week.length; i++){
 }
 
 
-async function getHours(file) {
-    const response = await fetch(file);
+async function getHours() {
+    const response = await fetch('hours.csv');
     const data = await response.text();
     // const index = data.split('\n')[0];
     const rows = data.split('\n').splice(1);

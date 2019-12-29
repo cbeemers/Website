@@ -6,8 +6,8 @@
             body {
                 margin: 0;
             }
-            
-            canvas {
+
+            #canvas {
                 border: 1px solid black;
             }
 
@@ -15,7 +15,13 @@
     </head>
 
     <body>
-        <canvas></canvas>
-        <script src="{% static 'pages/games/brickbreak/canvas.js' %}"></script>
+        <canvas id='canvas'></canvas>
+        <script>
+            var brick = "{% static 'pages/games/brickbreak/images/brick.png' %}"
+            var gameover = "{% static 'pages/games/brickbreak/images/gameOver.png' %}"
+            var victory = "{% static 'pages/games/brickbreak/images/victory.png' %}"
+            var screen = "{% static 'pages/games/brickbreak/images/screen.png' %}"
+        </script>
+        <script src="{% static 'pages/games/brickbreak/canvas.js' %}?"></script>
     </body>
 </html>
