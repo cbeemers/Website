@@ -26,8 +26,8 @@ for (let i=0; i < week.length; i++){
 }
 
 
-async function getMoney() {
-    const response = await fetch("2018/money.csv");
+async function getMoney(money_fp) {
+    const response = await fetch(money_fp);
     const data = await response.text();
 
     const rows = data.split('\n').splice(1);
@@ -37,18 +37,21 @@ async function getMoney() {
             
             weeks.push(row[0]);
             
-            row[1] ? monday.push(parseInt(row[1].replace("$", ""))): monday.push(0);
-            row[2] ? tuesday.push(parseInt(row[2].replace("$", ""))): tuesday.push(0);
-            row[3] ? wednesday.push(parseInt(row[3].replace("$", ""))): wednesday.push(0);
-            row[4] ? thursday.push(parseInt(row[4].replace("$", ""))): thursday.push(0);
-            row[5] ? friday.push(parseInt(row[5].replace("$", ""))): friday.push(0);
-            row[6] ? saturday.push(parseInt(row[6].replace("$", ""))): saturday.push(0);
-            row[7] ? sunday.push(parseInt(row[7].replace("$", ""))): sunday.push(0);
+            // row[1] ? monday.push(parseInt(row[1].replace("$", ""))): monday.push(0);
+            // row[2] ? tuesday.push(parseInt(row[2].replace("$", ""))): tuesday.push(0);
+            // row[3] ? wednesday.push(parseInt(row[3].replace("$", ""))): wednesday.push(0);
+            // row[4] ? thursday.push(parseInt(row[4].replace("$", ""))): thursday.push(0);
+            // row[5] ? friday.push(parseInt(row[5].replace("$", ""))): friday.push(0);
+            // row[6] ? saturday.push(parseInt(row[6].replace("$", ""))): saturday.push(0);
+            // row[7] ? sunday.push(parseInt(row[7].replace("$", ""))): sunday.push(0);
 
-            row[8] ? tips.push(parseInt(row[8].replace("$", ""))): tips.push(0);
+            // row[8] ? tips.push(parseInt(row[8].replace("$", ""))): tips.push(0);
             
-            weeklyTips.push(parseInt(row[8].replace("$", ""), 10));
-            weeklyMoney.push(parseFloat(row[10].replace("$", ""), 10));
+            // weeklyTips.push(parseInt(row[8].replace("$", ""), 10));
+            // weeklyMoney.push(parseFloat(row[10].replace("$", ""), 10));
+        }
+        for (let i = 0; i < weeks.length; i++){
+            console.log(weeks[i]);
         }
     });
     

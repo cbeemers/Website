@@ -50,15 +50,17 @@ def contact_view(request):
         contact_email = request.POST.get('return_address', '')
         content = request.POST.get('content', '')
 
+        if form.is_valid():
+            form.save()
+        messages.info(request, 'Message Sent!')
+
         send_mail(
             subject,
-            content,
+            contact_email + content,
             contact_email,
             ['cbeems13@gmail.com'],
             fail_silently=False,
         )
-        if form.is_valid():
-            form.save()
-        messages.info(request, 'Message Sent!')
+
 
     return render(request, 'pages/contact.html', context)

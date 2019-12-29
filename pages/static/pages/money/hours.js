@@ -13,15 +13,9 @@ const weeklyHours = [];
 var days = [];
 var hours = [];
 
-let week = ['monday', 'tuesday', 'wednesday','thursday','friday', 'saturday','sunday'];
-var map = new Map();
-for (let i=0; i < week.length; i++){
-    map[week[i]] = i;
-}
 
-
-async function getHours() {
-    const response = await fetch('hours.csv');
+async function getHours(hours_fp) {
+    const response = await fetch(hours_fp);
     const data = await response.text();
     // const index = data.split('\n')[0];
     const rows = data.split('\n').splice(1);
@@ -48,14 +42,21 @@ async function getHours() {
         
     });
     
-    days = [monday, tuesday, wednesday, thursday, friday, saturday, sunday];
-    // let averages = [];
+    days = {
+        'monday': monday,
+        'tuesday' : tuesday,
+        'wednesday' : wednesday,
+        'thursday' : thursday,
+        'friday' : friday,
+        'saturday' : saturday,
+        'sunday' : sunday
+    }
 
 }
 
 
-async function totalHours() {
-    await getHours();
+async function totalHours(hours_fp) {
+    await getHours(hours_fp);
 
     const ctx = document.getElementById('canvas').getContext('2d');
 
@@ -89,21 +90,19 @@ async function totalHours() {
     
 }
 
-async function perDay(day) {
-    await getHours();
+async function perDay(hours_fp, day) {
+    await getHours(hours_fp);
     const ctx = document.getElementById('canvas').getContext('2d');
     // ctx.clearRect(0,0, ctx.width, ctx.height);
     var hourChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: weeks,
             datasets: [{
-                label: ""+ day +" Hours",
-                data: days[map[day]],
+                label: "" + day + " Hours",
+                data: days[day],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
-
-                
                 borderWidth: 1
             }]
         },
@@ -120,4 +119,7 @@ async function perDay(day) {
             }
         }
     });
+    for (let i = 0; i < days[day].length; i++){
+        console.log(days[day][i]);
+    }
 }

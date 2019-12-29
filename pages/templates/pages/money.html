@@ -7,8 +7,8 @@
         <link rel="stylesheet" href="{% static 'pages/money/money.css' %}?">
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
-        <script type='module' src="{% static 'pages/money/money.js' %}"></script>
-        <script type='module' src="{% static 'pages/money/hours.js' %}"></script>
+        <script type='module' src="{% static 'pages/money/money.js' %}?"></script>
+        <script type='module' src="{% static 'pages/money/hours.js' %}?"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
 
@@ -82,9 +82,14 @@
                     <canvas id='hours'></canvas>
                 </div> -->
             </div>
+            <script>
+                
+                
+            </script>
 
             <script type='module'>
-                import { getMoney, total, perDay, weekly } from "{% static 'pages/money/money.js' %}";
+                var money_fp = "{% static 'pages/money/2019/money.csv' %}";
+                import { getMoney, total, perDay, weekly } from "{% static 'pages/money/money.js' %}?";
 
                 $(function() {
                     $('.day').on('click', function() {
@@ -92,14 +97,14 @@
                     });
                     $('.money-sub-menu').on('click', 'button', function(event){
                         reset();
-                        perDay(event.target.id);
+                        perDay(money_fp, event.target.id);
                     });
                 });
                 
                 $(function() {
                     $('#tips-week').on('click', function () {
                         reset();
-                        getMoney();
+                        getMoney(money_fp);
                         total();
                         // $('#tips').toggle();
                     });
@@ -108,7 +113,7 @@
                 $(function () {
                     $('#total-money').on('click', function() {
                         reset();
-                        getMoney();
+                        getMoney(money_fp);
                         weekly();
                     });
                 });
@@ -120,19 +125,20 @@
             
             </script>
             <script type='module'>
-                import { getHours, totalHours, perDay } from "{% static 'pages/money/hours.js' %}";
+                var hours_fp = "{% static 'pages/money/hours.csv' %}";
+                import { getHours, totalHours, perDay } from "{% static 'pages/money/hours.js' %}?";
                 $(function() {
                     $('#hours-week').on('click', function() {
                         reset();
-                        getHours();
-                        totalHours();
+                       // getHours(hours_fp);
+                        totalHours(hours_fp);
                     });
                 });
 
                 $(function() {
                     $('.hours-sub-menu').on('click', 'button', function(event){
                         reset();
-                        perDay(event.target.id);
+                        perDay(hours_fp, event.target.id);
                     });
                 });
 
