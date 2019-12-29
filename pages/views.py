@@ -56,7 +56,7 @@ def contact_view(request):
 
         send_mail(
             subject,
-            contact_email + content,
+            contact_email + '\n' + content,
             contact_email,
             ['cbeems13@gmail.com'],
             fail_silently=False,
