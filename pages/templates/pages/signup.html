@@ -1,0 +1,44 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'pages/main.css' %}?">
+
+<header class='contact-header'>
+    <nav class='main-nav'>
+        <ul>
+            <li>
+                <a href="{% url 'home-view' %}" >Home</a>
+            </li>
+        </ul>
+    </nav>
+    <h2>Sign Up</h2>
+    <h6>Work in progress...</h6>
+</header>
+
+<div class='contact'>
+    <!-- <center> -->
+        {% block content %}
+
+        {% if messages %}
+        <ul class='messages'>
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{message.tags}}"{%endif%}>{{message}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        
+        <!-- <div> -->
+        <!-- <center> -->
+            <div class='boxx'>
+                <form action="" method="POST" role="form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button style="background-color: #388CD2;" type="submit">Sign Up</button>
+                </form>
+            
+            </div>
+        <!-- </center> -->
+
+        {% endblock %}
+    <!-- </center> -->
+</div>

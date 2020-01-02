@@ -88,7 +88,7 @@
             </script>
 
             <script type='module'>
-                var money_fp = "{% static 'pages/money/2019/money.csv' %}";
+                var money_fp = "{% static 'pages/money/money.csv' %}";
                 import { getMoney, total, perDay, weekly } from "{% static 'pages/money/money.js' %}?";
 
                 $(function() {
@@ -104,17 +104,16 @@
                 $(function() {
                     $('#tips-week').on('click', function () {
                         reset();
-                        getMoney(money_fp);
-                        total();
-                        // $('#tips').toggle();
+                        //getMoney(money_fp);
+                        total(money_fp);
                     });
                 });
 
                 $(function () {
                     $('#total-money').on('click', function() {
                         reset();
-                        getMoney(money_fp);
-                        weekly();
+                        //getMoney(money_fp);
+                        weekly(money_fp);
                     });
                 });
                 
@@ -130,7 +129,7 @@
                 $(function() {
                     $('#hours-week').on('click', function() {
                         reset();
-                       // getHours(hours_fp);
+                        getHours(hours_fp);
                         totalHours(hours_fp);
                     });
                 });

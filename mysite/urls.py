@@ -24,12 +24,15 @@ from pages.views import (
     contact_view,
     snake_view,
     brickbreak_view,
+    signup_view,
+    register,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', welcome_view, name='welcome-view'),
     path('home/', home_view, name='home-view'),
+    path('home/sign-up', register, name='register'),
     path('games/', games_view, name ='games-view'),
     path('games/brickbreak', brickbreak_view, name='brickbreak-view'),
     path('games/snake', snake_view, name='snake-view'),

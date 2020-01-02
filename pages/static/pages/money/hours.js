@@ -10,7 +10,7 @@ var saturday = [];
 var sunday = [];
 const weeks = [];
 const weeklyHours = [];
-var days = [];
+var days = {};
 var hours = [];
 
 
@@ -50,7 +50,7 @@ async function getHours(hours_fp) {
         'friday' : friday,
         'saturday' : saturday,
         'sunday' : sunday
-    }
+    };
 
 }
 
@@ -109,6 +109,13 @@ async function perDay(hours_fp, day) {
         options: {
             scales: {
                 yAxes: [{
+                    type: 'time',
+                    time: {
+                        unit: 'hour',
+                        displayFormats: {
+                           hour: 'HH:mm'
+                        }
+                    },
                     ticks: {
                         beginAtZero: true,
                         callback: function(value) {

@@ -1,10 +1,34 @@
-from django.shortcuts import render
-from .forms import ContactForm
+from django.shortcuts import render, redirect
+from .forms import ContactForm, SignupForm
 from django.template.loader import get_template
 from django.core.mail import EmailMessage, send_mail
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+
 
 # Create your views here.
+
+def register(request):
+    form = UserCreationForm
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            # login(request, user)
+            return redirect(request,"pages:home-view")
+    
+    context = {
+        'form' : form
+    }
+
+    return render(request, "pages/signup.html", context)
+
+
+
+
+
+
 
 def home_view(request):
     form_class = ContactForm
@@ -64,3 +88,10 @@ def contact_view(request):
 
 
     return render(request, 'pages/contact.html', context)
+
+def signup_view(request):
+    form = SignupForm(request.POST or None)
+    context = {
+        'form' : form
+    }
+    return render(request, 'pages/signup.html', context)
