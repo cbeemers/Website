@@ -10,4 +10,5 @@ class Email(models.Model):
 
 class Signup(models.Model):
     email = models.CharField(max_length=120, blank=True)
+    username = models.CharField(max_length=120, blank=False)
     password = models.CharField(max_length=120, blank=True)

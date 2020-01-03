@@ -70,7 +70,7 @@ body {
 
 .boxx {
     display:flex;
-    align-items: center;
+    /* align-items: left; */
     /* z-index: 1;
     background: #E3E4E5;
     height: 230px;
@@ -232,11 +232,9 @@ figcaption {
     text-decoration: bold;
 }
 
-.main-header nav li {
-    text-align: center;
-    display: inline;
-    padding: 0 20px 0 20px;
-} 
+/* .main-header nav li {
+
+}  */
 
 .main-nav {
     color:white;
@@ -258,6 +256,12 @@ figcaption {
     padding-top: 20px;
     padding-bottom: 20px;
     display: inline-block;
+}
+
+.main-nav li {
+    text-align: center;
+    display: inline;
+    padding: 0 20px 0 20px;
 }
 
 .main-nav ul {

@@ -1,6 +1,6 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'pages/main.css' %}?"/>
+<link rel="stylesheet" href="{% static 'pages/main.css' %}?">
 
 <header class='contact-header'>
     <nav class='main-nav'>
@@ -10,13 +10,15 @@
             </li>
         </ul>
     </nav>
-    <h2>Sign Up</h2>
+    <h2>Login</h2>
     <h6>Work in progress...</h6>
 </header>
 
 <div class='contact'>
     <!-- <center> -->
         {% block content %}
+
+
 
         
         <!-- <div> -->
@@ -28,13 +30,15 @@
                 {% endfor %}
             </ul>
             {% endif %}
-            <!-- <div class='boxx'> -->
             <div>
                 <form action="" method="POST" role="form">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button style="background-color: #388CD2;" type="submit">Sign Up</button>
+                    <button style="background-color: #388CD2;" type="submit">Login</button>
+                    <br>
+                    <br> Don't have an account? <a href="{% url 'register' %}">Create Account</a>
                 </form>
+            
             </div>
         </center>
 

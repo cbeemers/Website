@@ -26,13 +26,19 @@ from pages.views import (
     brickbreak_view,
     signup_view,
     register,
+    login_view,
+    account_view,
+    account_logout,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', welcome_view, name='welcome-view'),
+    path('account', account_view, name='account-view'),
+    path('account/logout', account_logout, name='account-logout'),
     path('home/', home_view, name='home-view'),
     path('home/sign-up', register, name='register'),
+    path('home/login', login_view, name='login-view'),
     path('games/', games_view, name ='games-view'),
     path('games/brickbreak', brickbreak_view, name='brickbreak-view'),
     path('games/snake', snake_view, name='snake-view'),

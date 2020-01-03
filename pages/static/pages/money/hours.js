@@ -109,13 +109,13 @@ async function perDay(hours_fp, day) {
         options: {
             scales: {
                 yAxes: [{
-                    type: 'time',
-                    time: {
-                        unit: 'hour',
-                        displayFormats: {
-                           hour: 'HH:mm'
-                        }
-                    },
+                    // type: 'time',
+                    // time: {
+                    //     unit: 'hour',
+                    //     displayFormats: {
+                    //        hour: 'HH:mm'
+                    //     }
+                    // },
                     ticks: {
                         beginAtZero: true,
                         callback: function(value) {

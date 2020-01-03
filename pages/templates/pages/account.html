@@ -1,0 +1,31 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'pages/main.css' %}?"/>
+<link rel="stylesheet" href="{% static 'pages/account.css' %}?"/>
+
+<header class='contact-header'>
+    <nav class='main-nav'>
+        <ul>
+            <li>
+                <a href="{% url 'home-view' %}" >Home</a>
+            </li>
+            <!-- <li class='signup'> -->
+            <li>
+                <a href="{% url 'account-logout'%}">Logout</a>
+            </li>
+        </ul>
+    </nav>
+    <h2>Account</h2>
+    <h6>{{user.get_username}}</h6>
+</header>
+
+{% block content %}
+<h1>Things to add...</h1>
+<ul>
+    <li>Add/Change Image</li>
+    <li>Messages</li>
+    <li>Change Password</li>
+</ul>
+
+<!-- <button style="background-color: #388CD2;" method="POST">Sign Out</button> -->
+{% endblock %}

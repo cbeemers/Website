@@ -38,22 +38,32 @@ class ContactForm(forms.ModelForm):
         ]
 
 class SignupForm(forms.ModelForm):
-    email = forms.CharField(label='',required=True, 
+    email = forms.EmailField(label='',required=True, 
         widget=forms.Textarea(
             attrs={
                 "placeholder" : "Email",
-                "cols" : 50,
+                "style": 'width: 400px',
                 "rows" : 1
             }
         )
     )
 
-    password = forms.EmailField(label='', required=True,
+    username = forms.CharField(label='', required=False,
         widget=forms.Textarea(
             attrs={
-                "placeholder" : "Password",
-                "cols" : 50,
+                "placeholder" : "Username (optional)",
+                "style" : 'width: 400px',
                 "rows" : 1
+            }
+        )
+    )
+
+    password = forms.CharField(label='', required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Password",
+                "style": 'width: 400px'
+                
             }
         )
     )
@@ -62,5 +72,6 @@ class SignupForm(forms.ModelForm):
         model = Signup
         fields = [
             'email',
+            'username',
             'password',
         ]

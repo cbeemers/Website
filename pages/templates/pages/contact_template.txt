@@ -1,8 +1,0 @@
-Subject:
-{{ subject }}
-
-Email:
-{{ contact_email }}
-
-Content:
-{{ content|safe|striptags }}
