@@ -21,7 +21,8 @@ body {
     position: fixed;
     padding: 0;
     margin: 0;
-    background-color: rgba(206, 84, 84);
+    /* background-color: rgba(206, 84, 84); */
+    background: #388CD2;
 }
 
 .descript {
@@ -70,7 +71,7 @@ figcaption {
     /* background-image: url("images/background.png"); */
     /* background-image: url("images/curtain.jpg");
     background-repeat: no-repeat; */
-    min-height: 400px;
+    min-height: 500px;
     border-bottom: 3px solid black;
     
 }
