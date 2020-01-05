@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import ContactForm, SignupForm
+from .forms import ContactForm
 from django.template.loader import get_template
 from django.core.mail import EmailMessage, send_mail
 from django.contrib import messages
@@ -10,56 +10,6 @@ from django.db import IntegrityError
 
 
 # Create your views here.
-def account_logout(request):
-
-    logout(request)
-    return redirect(home_view)
-
-
-def account_view(request):
-
-    return render(request, 'pages/account.html', {})
-
-
-def register(request):
-    form = SignupForm
-    if request.method == "POST":
-        form = SignupForm(request.POST)
-
-        if form.is_valid():
-            # form.save()
-            try:
-                user = User.objects.create_user(request.POST.get('username',''), request.POST.get('email',''), request.POST.get('password', ''))
-                user.save()
-                login(request, user)
-                return redirect(home_view)
-            except IntegrityError:
-                messages.info(request, "Invalid sign in")
-
-            # login(request, user)
-            
-    
-    context = {
-        'form' : form
-    }
-
-    return render(request, "pages/signup.html", context)
-
-
-def login_view(request):
-    form = SignupForm
-
-
-    if request.method == 'POST':
-        try:
-            user = authenticate(email= request.POST.get('email',''), username=request.POST.get('username', ''), password=request.POST.get('password', ''))
-            login(request, user)
-            return redirect(home_view)
-        except AttributeError:
-            messages.info(request, "User not found")
-
-
-    return render(request, 'pages/login.html', {'form': form})
 
 
 def home_view(request):

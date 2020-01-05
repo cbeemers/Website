@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'pages',
+    'accounts',
 
 ]
 
@@ -134,3 +135,7 @@ EMAIL_HOST_USER = 'christopher.beeman13@gmail.com'
 EMAIL_HOST_PASSWORD = 'qrviqmlhsrtucpfc'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+
+# AUTH_USER_MODEL = "accounts.UserProfile"
+# AUTH_PROFILE_MODULE = 'accounts.UserProfile'

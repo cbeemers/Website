@@ -2,12 +2,14 @@
 <html>
         {% load static %}
 		<head>
-            <link rel="stylesheet" href="{% static 'pages/games/games.css' %}?" type=text/css>
+            <link rel="stylesheet" href="{% static 'pages/games/games.css' %}" type=text/css>
 		</head>
 
 		<body>
+            <canvas id='canvas'></canvas>
+            <script src="{% static 'pages/welcome/canvas.js' %}?"></script>
             <div class='main-container'>  
-                <header class='main-header'>
+                <header id='main-header'>
                     <nav>
                         <ul>
                             <li><a href="{% url 'home-view' %}">HOME</a></li>
@@ -22,7 +24,9 @@
                         also has some sizing errors, with the bottom edge not quite to scale with the snake.
                         I began space invaders but to this point have left it unfinished to work on more aspects
                         of my overall website.</b>
+                        <br> The background here is a JS canvas I wrote.
                     </p>
+           
                 </header>
                 <div class='games background'>
                     <div>

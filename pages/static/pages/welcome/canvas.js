@@ -3,7 +3,7 @@
 // const gui = new dat.GUI();
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
-canvas.height = innerHeight;
+canvas.height = 500;
 canvas.width = innerWidth;
 
 let mouse = {
@@ -34,9 +34,9 @@ class Circle {
         this.opacity = 1;
         
         this.colors = (opacity) => {
-            return ["rgba(255,255,255," + opacity + ")",
+            return ["rgba(72, 110, 215," + opacity + ")",
                     "rgba(100,0,200," + opacity + ")",
-                    "rgba(40, 251, 33," + opacity + ")",
+                    // "rgba(40, 251, 33," + opacity + ")",
                     "rgba(204,59,96," + opacity + ")"]
         };
         // rgba(59,97,208
