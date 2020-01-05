@@ -3,4 +3,4 @@ Resume website
 
 christopherbeeman.pythonanywhere.com
 
-My first attempt at a full stack website
+My first attempt at developing a full stack website
