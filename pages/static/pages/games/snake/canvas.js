@@ -1,8 +1,8 @@
 
 
 var canvas = document.querySelector('canvas');
-const WIDTH = canvas.width = innerWidth;
-const HEIGHT = canvas.height = innerHeight - 40;
+const WIDTH = canvas.width = innerWidth - innerWidth%20;
+const HEIGHT = canvas.height = innerHeight - innerHeight%20 - 40;
 var ctx = canvas.getContext('2d');
 var scl = 20;
 const rows = HEIGHT / scl;
@@ -172,6 +172,8 @@ class Game {
                 this.snake.draw();
             }
             
+            // Could move this into a css sheet and use document.getElementById('')
+
             if (this.paused) {
                 ctx.font = "30px Arial";
                 ctx.fillStyle = "black";
@@ -196,7 +198,7 @@ class Game {
             ctx.fillText("Q to start over",WIDTH/2, HEIGHT/2 + 30);
         }
         else{
-            ctx.rect(0,0,WIDTH, HEIGHT);
+            ctx.rect(0,0,innerWidth, innerHeight);
             ctx.fillStyle = 'black';
             ctx.fill();
 
@@ -255,7 +257,6 @@ class Game {
 function play() {
     window.setInterval( () => {
         ctx.clearRect(0,0, WIDTH, HEIGHT)
-
     
         if (game.started) {
             if (!game.paused && !game.gameOver) {
@@ -269,5 +270,7 @@ function play() {
 }
 
 let game = new Game();
+
 play();
+
 
