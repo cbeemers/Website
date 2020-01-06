@@ -25,6 +25,17 @@ body {
     background: #388CD2;
 }
 
+.contact-link {
+    text-decoration: none;
+    display: center;
+    color: white;
+
+}
+
+.contact-link:hover {
+    color: #cccccc;
+}
+
 .descript {
     padding: 0 50px 20px 50px;
     /* color: black; */
@@ -55,8 +66,8 @@ figcaption {
     bottom: 0;
     width: 100%;
     text-align: center;
-    min-height: 100px;
-    max-height: 100%;
+    min-height: 150px;
+    /* max-height: 100%; */
 }
 
 .footer h1 {
@@ -71,7 +82,7 @@ figcaption {
     /* background-image: url("images/background.png"); */
     /* background-image: url("images/curtain.jpg");
     background-repeat: no-repeat; */
-    min-height: 500px;
+    min-height: 600px;
     border-bottom: 3px solid black;
     
 }
@@ -86,8 +97,8 @@ figcaption {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
-    width: 150px;
-    height: 100px;
+    width: 200px;
+    height: 150px;
 
 }
 
@@ -158,40 +169,4 @@ nav {
     text-align: center;
 }
 
-
-
-/* nav a:hover {
-    background-color: rgba(255, 255, 255, .3);
-} */
-
-
-/* a {
-    text-decoration: none;
-} */
-
-/* a:hover {
-    text-decoration: underline;
-    background-color: rgba(26, 6, 6, 0.089);
-} */
-
-/* .center {
-    text-align: center;
-} */
-
-/* img {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    width: 150px;
-    height: 100px;
-  }
-  
-img:hover {
-    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-}
-
-html, body{
-    margin:0;
-    padding: 0;
-} */
 
