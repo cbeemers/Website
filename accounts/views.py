@@ -40,9 +40,17 @@ def register(request):
         if form.is_valid():
             # form.save()
             try:
-                user = User.objects.create_user(request.POST.get('username',''), request.POST.get('email',''), request.POST.get('password', ''))
+                email = request.POST.get('email', '')
+                user = User.objects.create_user(request.POST.get('username',''), email, request.POST.get('password', ''))
                 user.save()
                 login(request, user)
+                send_mail(
+                    'Account Created!',
+                    'Thank you for creating an account with my website and I hope you will stay up to date with the continuous changes I plan to make.',
+                    email,
+                    [email],
+                    fail_silently=False,
+                )
                 return redirect(home_view)
             except IntegrityError:
                 messages.info(request, "Invalid sign in")
