@@ -1,7 +1,14 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'pages/main.css' %}?"/>
-<link rel="stylesheet" href="{% static 'pages/account.css' %}?"/>
+
+
+<head>
+    <title>Account/{{ user.get_username }}</title>
+    <link rel="stylesheet" href="{% static 'pages/main.css' %}?"/>
+    <link rel="stylesheet" href="{% static 'pages/account.css' %}?"/>
+</head>
+
+<body>
 
 <header class='contact-header'>
     <nav class='main-nav'>
@@ -34,3 +41,4 @@
 
 <!-- <button style="background-color: #388CD2;" method="POST">Sign Out</button> -->
 {% endblock %}
+</body>
