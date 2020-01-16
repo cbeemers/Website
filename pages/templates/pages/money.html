@@ -91,7 +91,7 @@
 
             <script type='module'>
                 var money_fp = "{% static 'pages/money/money.csv' %}";
-                import { getMoney, total, perDay, weekly } from "{% static 'pages/money/money.js' %}?";
+                import { getMoney, total, perDay, weekly } from "{% static 'pages/money/money.js' %}??";
 
                 $(function() {
                     $('.day').on('click', function() {
@@ -127,7 +127,7 @@
             </script>
             <script type='module'>
                 var hours_fp = "{% static 'pages/money/hours.csv' %}";
-                import { getHours, totalHours, perDay } from "{% static 'pages/money/hours.js' %}?";
+                import { getHours, totalHours, perDay } from "{% static 'pages/money/hours.js' %}??";
                 $(function() {
                     $('#hours-week').on('click', function() {
                         reset();

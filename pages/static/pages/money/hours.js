@@ -11,18 +11,17 @@ var sunday = [];
 const weeks = [];
 const weeklyHours = [];
 var days = {};
-var hours = [];
+//var hours = [];
 
 
 async function getHours(hours_fp) {
     const response = await fetch(hours_fp);
     const data = await response.text();
-    // const index = data.split('\n')[0];
     const rows = data.split('\n').splice(1);
  
     rows.forEach(line => {
         let row = line.split(',');
-        if (monday.length < 16){
+        if (monday.length < 15){
             
             weeks.push(row[0]);
             
@@ -93,9 +92,8 @@ async function totalHours(hours_fp) {
 async function perDay(hours_fp, day) {
     await getHours(hours_fp);
     const ctx = document.getElementById('canvas').getContext('2d');
-    // ctx.clearRect(0,0, ctx.width, ctx.height);
     var hourChart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: weeks,
             datasets: [{
@@ -108,13 +106,23 @@ async function perDay(hours_fp, day) {
         },
         options: {
             scales: {
+                // xAxes: [{
+                //     type: 'time',
+                //     time: {
+                //         unit: 'hour',
+                //         displayFormats: {
+                //             hour: 'HH:mm'
+                //         }
+                //     }
+                // }],
                 yAxes: [{
                     // type: 'time',
                     // time: {
-                    //     unit: 'hour',
+                    //     //parser: timeFormat,
                     //     displayFormats: {
-                    //        hour: 'HH:mm'
-                    //     }
+                    //         minute: 'HH:mm',
+                    //         hour: 'HH'
+                    //     },
                     // },
                     ticks: {
                         beginAtZero: true,
@@ -128,5 +136,7 @@ async function perDay(hours_fp, day) {
     });
     for (let i = 0; i < days[day].length; i++){
         console.log(days[day][i]);
+        
     }
+
 }

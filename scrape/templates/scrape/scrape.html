@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'pages/main.css' %}??" type=text/css>
+    <link rel="stylesheet" href="{% static 'pages/games/games.css' %}?" type=text/css>
+    <link rel="stylesheet" href="{% static 'scrape/scrape.css' %}?" type=text/css>
+    <meta charset="UTF-8">
+
+    <title>Scrape</title>
+</head>
+<body>
+    <header style='background-color: #388CD2; height: 400px;'class='main-header scrape'>
+        <nav class='main-nav'>
+            <ul>
+                <li><a href="{% url 'home-view' %}">Home</a></li>
+                <li><a href="{% url 'games-view' %}">Games</a></li>
+                <li><a href="{% url 'money-view' %}">Money</a></li>
+                <!-- <li><a href="versions/versions.html">Versions</a></li> -->
+            </ul>
+        </nav>       
+        <h1>Web Scraping</h1>
+        <p class='descript'>This page is to show some basic web scraping I did involving the stock market using Python module BeautifulSoup. 
+            This is my newest page/project and I plan to continuosly update the data that is being displayed. I used two websites; 
+            MarketWatch to get the abbreviation of the company being searched for, then Yahoo Finance to get the actual stock market
+            data. I plan to implement a search bar on my site that will then call my script which will pull data from the stock and then maybe have the data be
+            written to an excel sheet in the database.
+        </p>
+    </header>
+
+    <div class='scrape'>
+        <center>
+            <form action="" method="POST" role="form" style='padding-top: 2em; margin: 0;'>
+                {% csrf_token %}
+                {{ form }} 
+                <input style="background-color: #388CD2;" type="submit" name='btn' value='Search'>
+                <!-- <button style="background-color: #388CD2;" type="submit">Login</button> -->
+            </form>
+        </center>
+        <div>
+            {% if data.price %}
+            <center>
+            <p>Current Price: {{ data.price }}</p>
+            <p>Change: {{ data.change }}</p>
+            {% for sentence in data.sentences %}
+                {{ sentence }}
+                <br>
+                <br>
+                <!-- print(data.header[i], ": ", data.summary[i]) -->
+            {% endfor %}
+            </center>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <footer style='position: relative;'class='footer'></footer>
+
+
+</body>
+</html>

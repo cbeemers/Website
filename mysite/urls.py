@@ -36,6 +36,10 @@ from accounts.views import (
     login_view,
 )
 
+from scrape.views import (
+    scrape_view,
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', welcome_view, name='welcome-view'),
@@ -49,5 +53,6 @@ urlpatterns = [
     path('games/snake', snake_view, name='snake-view'),
     path('money/', money_view, name='money-view'),
     path('contact/', contact_view, name='contact-view'),
+    path('scrape', scrape_view, name='scrape-view'),
 
 ]
