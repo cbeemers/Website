@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     'pages',
     'accounts',
-    # 'scrape',
+    'scrape',
 
 ]
 
