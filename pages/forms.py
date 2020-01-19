@@ -1,5 +1,5 @@
 from django import forms
-from .models import Email
+from .models import Email, Money
 
 class ContactForm(forms.ModelForm):
     subject = forms.CharField(label='',required=True, 
@@ -37,41 +37,32 @@ class ContactForm(forms.ModelForm):
             'content',
         ]
 
-# class SignupForm(forms.ModelForm):
-#     email = forms.EmailField(label='',required=True, 
-#         widget=forms.Textarea(
-#             attrs={
-#                 "placeholder" : "Email",
-#                 "style": 'width: 400px',
-#                 "rows" : 1
-#             }
-#         )
-#     )
 
-#     username = forms.CharField(label='', required=False,
-#         widget=forms.Textarea(
-#             attrs={
-#                 "placeholder" : "Username (optional)",
-#                 "style" : 'width: 400px',
-#                 "rows" : 1
-#             }
-#         )
-#     )
+class MoneyForm(forms.ModelForm):
 
-#     password = forms.CharField(label='', required=True,
-#         widget=forms.PasswordInput(
-#             attrs={
-#                 "placeholder": "Password",
-#                 "style": 'width: 400px'
-                
-#             }
-#         )
-#     )
+    header = forms.CharField(label='',required=True, 
+        widget=forms.Textarea(
+            attrs={
+                "placeholder" : "Header being added to",
+                "cols" : 100,
+                "rows" : 1
+            }
+        )
+    )
 
-#     class Meta:
-#         model = Signup
-#         fields = [
-#             'email',
-#             'username',
-#             'password',
-#         ]
+    data = forms.EmailField(label='', required=True,
+        widget=forms.Textarea(
+            attrs={
+                "placeholder" : "Data added",
+                "cols" : 100,
+                "rows" : 1
+            }
+        )
+    )
+
+    class Meta:
+        model = Money
+        fields = [
+            'header',
+            'data'
+        ]

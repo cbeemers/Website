@@ -1,3 +1,16 @@
+.authenticate {
+    text-align: center;
+}
+
+.authenticate a {
+    color: black;
+    text-decoration: underline;
+}
+
+.authenticate a:hover {
+    background-color: #388CD2;
+}
+
 body, html{
     margin:0;
     padding: 0;
@@ -114,6 +127,16 @@ header {
     margin: 0;
 }
 
+.header {
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: #388CD2;
+    font-size: 32px;
+}
+
 .list {
     margin: 0;
     padding: 0;
@@ -151,7 +174,8 @@ header {
 
 .main-header h1 {
     /* color: white; */
-    padding-top: 100px;
+    margin: 0;
+    padding: 1em 0 1em 0;
     text-align: center;
     font-size: 52px;
 }
@@ -198,6 +222,11 @@ header {
 
 .money {
     padding-right: 100px;
+}
+
+.personal {
+    min-height: 400px;
+    /* background-color: black; */
 }
 
 .sub-menu {

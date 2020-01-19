@@ -176,16 +176,15 @@ figcaption {
     font-size: 32px;
 }
 
-.lang img {
-    min-width: 200px;
-    min-height: 200px;
-}
-
 .lang {
     float: left;
     width: 100%;
-    border-bottom: 1px dotted black;
-    
+    border-bottom: 2px dotted black;
+}
+
+.lang img {
+    min-width: 200px;
+    min-height: 200px;
 }
 
 .lang-align {
