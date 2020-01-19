@@ -299,6 +299,16 @@ nav {
     opacity: 1;
 }
 
+.scrape {
+    /* text-decoration: none; */
+    color: black;
+}
+
+.scrape:hover {
+    /* background-color: #388CD2; */
+    color: #388CD2;
+}
+
 .section {
     padding: 0;
     margin: 0;
