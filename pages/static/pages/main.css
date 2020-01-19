@@ -243,12 +243,12 @@ figcaption {
     color: white;
     text-decoration: none;
     text-transform: uppercase;
-    /* font-size: 20px; */
+    font-size: 20px;
 }
 
 .main-nav a:hover {
     color: #cccccc;
-    font-size: 24px;
+    /* font-size: 24px; */
 }
 
 .main-nav a {
