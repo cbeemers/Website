@@ -34,7 +34,7 @@
                 <form action="" method="POST" role="form">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button style="background-color: #388CD2;" type="submit">Login</button>
+                    <button class='btn'  type="submit">Login</button>
                     <br>
                     <br> Don't have an account? <a href="{% url 'register' %}">Create Account</a>
                 </form>

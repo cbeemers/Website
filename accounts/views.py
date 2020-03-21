@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from django.shortcuts import render, redirect
-from .forms import SignupForm, ProfileForm
+from .forms import SignupForm, LoginForm, ProfileForm
 from django.template.loader import get_template
 from django.core.mail import EmailMessage, send_mail
 from django.contrib import messages
@@ -10,6 +10,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from pages.views import home_view
+
+
 
 
 
@@ -41,17 +43,20 @@ def register(request):
             # form.save()
             try:
                 email = request.POST.get('email', '')
-                user = User.objects.create_user(request.POST.get('username',''), email, request.POST.get('password', ''))
-                user.save()
-                login(request, user)
-                send_mail(
-                    'Account Created!',
-                    'Thank you for creating an account with my website and I hope you will stay up to date with the continuous changes I plan to make.',
-                    email,
-                    [email],
-                    fail_silently=False,
-                )
-                return redirect(home_view)
+                if request.POST.get('password', '') == request.POST.get('confirm', ''):
+                    user = User.objects.create_user(request.POST.get('username',''), email, request.POST.get('password', ''))
+                    user.save()
+                    login(request, user)
+                    send_mail(
+                        'Account Created!',
+                        'Thank you for creating an account with my website and I hope you will stay up to date with the continuous changes I plan to make.',
+                        email,
+                        [email],
+                        fail_silently=False,
+                    )
+                    return redirect(home_view)
+                else:
+                    messages.info(request, "Passwords did not match.")
             except IntegrityError:
                 messages.info(request, "Invalid sign in")
 
@@ -66,8 +71,7 @@ def register(request):
 
 
 def login_view(request):
-    form = SignupForm
-
+    form = LoginForm
 
     if request.method == 'POST':
         try:
@@ -75,7 +79,7 @@ def login_view(request):
             login(request, user)
             return redirect(home_view)
         except AttributeError:
-            messages.info(request, "User not found")
+            messages.info(request, "User not found.")
 
 
     return render(request, 'accounts/login.html', {'form': form})

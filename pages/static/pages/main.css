@@ -79,6 +79,11 @@ body {
     padding: 10px; */
 }
 
+.btn {
+    color: white;
+    background-color: #388CD2;
+}
+
 #canvas {
     padding: 0;
     margin: 0;

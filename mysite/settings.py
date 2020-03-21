@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'pages',
     'accounts',
+
     # 'scrape',
 
 ]
@@ -138,5 +139,5 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 
-# AUTH_USER_MODEL = "accounts.UserProfile"
+# AUTH_USER_MODEL = "users.User"
 # AUTH_PROFILE_MODULE = 'accounts.UserProfile'
