@@ -11,11 +11,12 @@ var sunday = [];
 const weeks = [];
 const weeklyTips = [];
 const weeklyMoney = [];
-var days = [];
+var days = {};
 var tips = [];
 
 let week = ['monday', 'tuesday', 'wednesday','thursday','friday', 'saturday','sunday'];
 var map = new Map();
+
 for (let i=0; i < week.length; i++){
     map[week[i]] = i;
 }
@@ -47,23 +48,31 @@ async function getMoney(money_fp) {
         }
     });
     
-    days = [monday, tuesday, wednesday, thursday, friday, saturday, sunday];
+    days = {
+        'monday': monday,
+        'tuesday': tuesday,
+        'wednesday': wednesday,
+        'thursday' : thursday,
+        'friday' : friday,
+        'saturday' : saturday,
+        'sunday' : sunday
+    }
     let averages = [];
     
-    for (let i = 0; i < days.length; i++) {
-        let sum = 0;
-        let count = 0;
-        for (let j = 0; j < days[i].length; j++) {
-            if (days[i][j]){
-                var currency = days[i][j];
-                sum += currency;
-                count++;
-            }
-        }
+    // for (let i = 0; i < days.length; i++) {
+    //     let sum = 0;
+    //     let count = 0;
+    //     for (let j = 0; j < days[i].length; j++) {
+    //         if (days[i][j]){
+    //             var currency = days[i][j];
+    //             sum += currency;
+    //             count++;
+    //         }
+    //     }
         
-        averages.push(Math.round(sum/count*100)/100);
+        //averages.push(Math.round(sum/count*100)/100);
 
-    }
+    // }
 
 }
 
@@ -77,7 +86,7 @@ async function perDay(money_fp, day) {
             labels: weeks,
             datasets: [{
                 label: ""+ day +" Tips",
-                data: days[map[day]],
+                data: days[day],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
 
@@ -141,8 +150,6 @@ async function total(money_fp) {
 async function weekly(money_fp) {
     await getMoney(money_fp);
     const ctx = document.getElementById('canvas').getContext('2d');
-    // ctx.height = 400;
-    // ctx.width = 400;
     var moneyChart = new Chart(ctx, {
         type: 'bar',
         data: {
