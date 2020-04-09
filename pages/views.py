@@ -77,3 +77,7 @@ def signup_view(request):
         'form' : form
     }
     return render(request, 'pages/signup.html', context)
+
+def sudoku_view(request):
+    context = {}
+    return render(request, 'pages/games/sudoku.html', context)

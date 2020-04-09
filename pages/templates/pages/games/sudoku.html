@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+    {% load static %}
+    <head>
+        <meta charset="utf-8">
+        <title>Sudoku</title>
+        <link rel="stylesheet" href="{% static 'pages/games/sudoku/sudoku.css' %}">
+        <link rel="stylesheet" href="{% static 'pages/main.css' %}?" type=text/css>
+        <!-- <link rel="stylesheet" href="{% static 'pages/games/games.css' %}"> -->
+    </head>
+
+    <body>
+        <header class='header'>
+            <nav class='main-nav'>
+                <ul>
+                    <li><a href="{% url 'home-view' %}">HOME</a></li>
+                </ul>
+            </nav>
+            <h1>Sudoku!</h1>
+            <p>This started as me programming a sudoku game solver and eventually evolved into this here web application.
+                The solver was created using a backtracking algorithm. It started by going through each cell and iterating 
+                from 1 to 9, checking to see if placing the value in the current cell is valid. If valid, the value is placed
+                and the function recursively moves on to the next cell. If the for loop is exited without placing a 
+                value, an invalid move occured somewhere and the function back tracks in the call stack, removes the value placed, and 
+                continues the for loop where it left off. 
+                The game itself is created and played completely through javascript. Jquery was used to create the board, and listen
+                for onclick events. Next step would be to write a program to generate a new board, instead of using a hard-coded board.
+            </p>
+        </header>
+
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="{% static 'pages/games/sudoku/sudoku.js' %}"></script>
+    </body>
+</html>

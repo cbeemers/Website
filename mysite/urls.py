@@ -25,6 +25,7 @@ from pages.views import (
     snake_view,
     brickbreak_view,
     signup_view,
+    sudoku_view,
 
 
 )
@@ -51,6 +52,7 @@ urlpatterns = [
     path('games/snake', snake_view, name='snake-view'),
     path('money/', money_view, name='money-view'),
     path('contact/', contact_view, name='contact-view'),
+    path('games/sudoku', sudoku_view, name='sudoku-view'),
     # path('scrape', scrape_view, name='scrape-view'),
 
 ]

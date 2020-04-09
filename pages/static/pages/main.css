@@ -181,6 +181,10 @@ figcaption {
     font-size: 32px;
 }
 
+.header p {
+    font-size: 20px;
+}
+
 .lang {
     float: left;
     width: 100%;

@@ -9,60 +9,57 @@
 		<body>
             <canvas id='canvas'></canvas>
             <script src="{% static 'pages/welcome/canvas.js' %}?"></script>
-            <div class='main-container'>  
-                <header id='main-header'>
-                    <nav>
-                        <ul>
-                            <li><a href="{% url 'home-view' %}">HOME</a></li>
-                            <li><a href="{% url 'money-view' %}">Money</a></li>
-                        </ul>
-                    </nav>
-                    <h1>GAMES</h1>
-                    <p class='descript'><b>Some simple games that I wrote using JS canvas. These games were my first time using 
-                        JS Canvas and a few of my first JS programs. 
-                        They are displayed in the order I created them; brick break has some minor flaws in 
-                        collision response to bricks but has more styling than snake which has next to none.
-                        These games were less of an attempt at game development and more so practice getting myself familiar with 
-                        JS syntax.
-                        <br> The background here is a JS canvas I wrote.</b>
-                    </p>
-           
-                </header>
-                <div class='games background'>
-                    <div>
-                        <figure>
-                            <a href="{% url 'brickbreak-view' %}">
-                                <img src="{% static 'pages/games/images/brickBreak.png' %}" alt="Brick Break">
-                            </a>
-                            <figcaption>Brick Break!</figcaption>
-                        </figure>
-
-                    </div>
-                    <div>
-                        <figure>
-                            <a href="{% url 'snake-view' %}">
-                                <img src="{% static 'pages/games/images/snake.png' %}" alt="Snake">
-                            </a>
-                            <figcaption>Snake</figcaption>
-                        </figure>
-
-                    </div>
-                    <!-- <div>
-                        <figure>
-                            <a href="spaceInvaders/spaceInvaders.html">
-                                <img src="images/spaceInvaders.png" alt="Space Invaders">
-                            </a>
-                            <figcaption>Space Invaders(unfinished)</figcaption>
-                        </figure>
-                    </div> -->
-                </div>
-                <div class='footer'>
-                    <a class='contact-link' href="{% url 'contact-view' %}"><h3>Contact Me</h3></a>
-                    <a class='contact-link' href="https://github.com/cbeemers/Website/blob/master/pages/static/pages/welcome/canvas.js" target='blank'>
-                        <h3>Canvas Source Code</h3>
-                    </a>
-                    <a class='contact-link' href="https://github.com/cbeemers/Games" target='blank'><h3>Games Source Code</h3></a>
-                </div>
+            <header id='main-header'>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="{% url 'home-view' %}">HOME</a></li>
+                        <li><a href="{% url 'money-view' %}">Money</a></li>
+                    </ul>
+                </nav>
+                <h1>GAMES</h1>
+                <p class='descript'><b>Some simple games that I wrote using JS canvas. These games were my first time using 
+                    JS Canvas and a few of my first JS programs. 
+                    They are displayed in the order I created them; brick break has some minor flaws in 
+                    collision response to bricks but has more styling than snake which has next to none.
+                    These games were less of an attempt at game development and more so practice getting myself familiar with 
+                    JS syntax.
+                    <br> The background here is a JS canvas I wrote.</b>
+                </p>
+            </header>           
+            <div class='h'>
+                <ul>
+                    <li><a href="{% url 'sudoku-view' %}">Sudoku</a></li>
+                    <!-- <li><a href="">Hangman</a></li> -->
+                </ul>
             </div>
+            <div class='games background'>
+                
+                <div>
+                    <figure>
+                        <a href="{% url 'brickbreak-view' %}">
+                            <img src="{% static 'pages/games/images/brickBreak.png' %}" alt="Brick Break">
+                        </a>
+                        <figcaption>Brick Break!</figcaption>
+                    </figure>
+
+                </div>
+                <div>
+                    <figure>
+                        <a href="{% url 'snake-view' %}">
+                            <img src="{% static 'pages/games/images/snake.png' %}" alt="Snake">
+                        </a>
+                        <figcaption>Snake</figcaption>
+                    </figure>
+
+                </div>
+            
+            </div>
+            <footer class='footer'>
+                <a class='contact-link' href="{% url 'contact-view' %}"><h3>Contact Me</h3></a>
+                <a class='contact-link' href="https://github.com/cbeemers/Website/blob/master/pages/static/pages/welcome/canvas.js" target='blank'>
+                    <h3>Canvas Source Code</h3>
+                </a>
+                <a class='contact-link' href="https://github.com/cbeemers/Games" target='blank'><h3>Games Source Code</h3></a>
+            </footer>
 		</body>
 </html>
