@@ -1,0 +1,112 @@
+
+.board {
+    max-width: 450px;
+    min-height: 450px;
+    display: inline-block;
+    border: 2px solid black;
+}
+
+button {
+    border: none;
+    font-size: 24px;
+}
+
+.buttons, .numbers {
+    /* padding: 10px; */
+    width: 450px;
+    display: inline-block;
+}
+
+.cell, .quad_cell, .wrong_cell, .selected_cell {
+    width: 50px;
+    padding: 0;
+    margin: 0;
+    height: 50px;
+    border: 1px solid grey;
+    display: inline-block;
+    vertical-align: bottom;
+    color: black;
+}
+
+.cell:hover, .quad_cell:hover {
+    background-color: dimgray;
+}
+
+h1 {
+    text-align: center;
+}
+
+/* .header {
+    width: 100%;
+    color: white;
+    background: #388CD2;
+    font-size: 32px;
+    height: 200px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid black;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header a {
+    text-decoration: none;
+    color: white;
+} */
+
+li{
+    padding: 20px;
+    display: inline;
+}
+
+.option {
+    height: 40px;
+    width: 40px;
+}
+
+.parent {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.quad_cell {
+    border-right: 2px solid black;
+}
+
+.quad_row {
+    border-bottom: 2px solid black;
+}
+
+.row, .quad_row{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    max-height: 50px;
+}
+
+.selected_cell {
+    border: 2px solid blue;
+}
+
+.solve, .reset {
+    border: solid 1px black;
+    border-radius: 20%;
+    height: 50px;
+    width: 100px;
+    margin: 1%;
+    outline: none;
+}
+
+.solve:hover, .reset:hover {
+    background-color: slategrey;
+}
+
+ul {
+    margin: 0;
+}
+
+.wrong_cell {
+    background-color: red;
+}
+
