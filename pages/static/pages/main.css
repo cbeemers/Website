@@ -171,7 +171,7 @@ figcaption {
     padding-bottom: 20px;
 }
 
-.header {
+.header, .header-border {
     width: 100%;
     color: white;
     text-align: center;
@@ -181,7 +181,12 @@ figcaption {
     font-size: 32px;
 }
 
-.header p {
+.header-border {
+    border-bottom: 2px solid black;
+    padding-top: 0;
+}
+
+.header p, .header-border p{
     font-size: 20px;
 }
 

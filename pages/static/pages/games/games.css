@@ -123,9 +123,8 @@ header{
     /* text-align: center; */
     background: #388CD2;
     font-size: 32px;
-    height: 200px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid black;
+    height: 100px;
+    border-bottom: 3px solid black;
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -133,8 +132,13 @@ header{
 }
 
 .h a {
+    padding: 0;
     text-decoration: none;
     color: white;
+}
+
+.h ul li {
+    padding: 0;
 }
 
 .main-container {
@@ -191,4 +195,5 @@ nav {
 
 ul {
     margin: 0;
+    padding: 0;
 }
