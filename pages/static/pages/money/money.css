@@ -137,6 +137,10 @@ header {
     font-size: 32px;
 }
 
+.hours:hover, .money:hover {
+    opacity: .5;
+}
+
 .list {
     margin: 0;
     padding: 0;
