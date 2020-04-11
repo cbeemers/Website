@@ -1,0 +1,316 @@
+
+// The maze to display
+var m = new maze(500, 500, 10, 10);
+// Starting location containing sparty to move from
+var start = {};
+
+
+$(document).ready (function () {
+
+    m.startMaze();
+
+    let table = document.createElement('div'); table.className = "board";
+    let body = document.getElementsByTagName("body")[0]; 
+    $('body').height(innerHeight);
+
+    $('.board').width(m.width + "px");
+    $('.board').height(m.height + "px");
+
+    let p = document.createElement('div'); p.className = 'parent';
+    p.appendChild(table);
+
+    body.append(p);
+
+    for (let row=0; row<m.rows; row++) {
+        // Create the row
+        var tr = document.createElement('div');
+        tr.className = "row";
+
+        for (let col=0; col<m.cols; col++) {
+            // Creates a cell
+            let button = document.createElement('div'); 
+            button.className = "cell";
+            let cell = m.cells[row][col];
+            if (cell.image != null) {
+                img = document.createElement('img'); img.src = cell.image; img.width=m.cellWidth; img.height=m.cellHeight;
+                button.appendChild(img);
+                if (cell.image == sparty) {
+                    // Set the location sparty is starting at
+                    start = {
+                        "row" : row,
+                        "col" : col
+                    };
+                }
+            }
+
+            // Determine the borders of each cell
+            if (!cell.border[0]) { button.style.borderTop = "none"; }
+            else if (button.style.borderTop != "none") {button.style.borderTop="1px solid black";}
+            if (!cell.border[1]) { button.style.borderBottom = "none"; }
+            // else if (button.style.borderBottom != "none") {button.style.borderBottom="1px solid black";}
+            if (!cell.border[2]) { button.style.borderLeft = "none"; }
+            else if (button.style.borderLeft != "none") {button.style.borderLeft="1px solid black";}
+            if (!cell.border[3]) { button.style.borderRight = "none"; }
+            // else if (button.style.borderRight != "none") {button.style.borderRight="1px solid black";}
+            
+            tr.appendChild(button);
+        }
+        // Adds a row to the board
+        table.appendChild(tr);
+    }
+
+    // console.log(start);
+
+    // Make the button to solve the maze
+    let b = document.createElement('button'); b.innerHTML = "Solve"; b.className = "solve";
+    let b2 = document.createElement('button'); b2.innerHTML = "New";  b2.className = "new";
+    let buttons = document.createElement('div'); buttons.className = 'buttons'; buttons.appendChild(b); buttons.appendChild(b2);
+    let parent = document.createElement('div'); parent.className = 'parent'; parent.appendChild(buttons); 
+    body.appendChild(parent);
+
+    // Set the dimensions of each cell and row
+    $('.cell').width(m.cellWidth + "px");
+    $('.cell').height(m.cellHeight + "px");
+    $('.row').width(m.width + "px");
+    $('.row').height(m.cellHeight + "px");
+
+    // Unvisit all cells so the maze can be solved
+    m.unVisit();
+});
+
+$(function () {
+    $('.solve').on("click", function() {
+        m.unVisit();
+        // solve(m, [], start['row'], start['col']);
+        solve(m, [], start['row'], start['col'], function(solve=false){ return solve; });
+
+    });
+
+    $('.new').on("click", function () {
+        
+    });
+});
+
+function setImage(m, row, col) {
+
+    let board = document.getElementsByClassName('board')[0];
+    let c = board.children[row].children[col];
+
+    let img = document.createElement('img'); img.src = sparty; img.width = m.cellWidth; img.height=m.cellHeight;
+    
+    c.appendChild(img);
+} 
+
+function removeImage(row, col) {
+    let board = document.getElementsByClassName('board')[0];
+    let c = board.children[row].children[col];
+    if (c.firstChild != null) {
+        c.removeChild(c.firstChild);
+    }
+}
+
+function solve(m, path, row, col, callback) {
+    
+    let cell = m.cells[row][col];
+    // cell.shuffleAdjacents();
+
+    // Array of the nodes that have been visited
+    path.push(cell);
+    cell.visited = true;
+
+    if (cell.image == finish) {
+        removeImage(row,col);
+        return callback(true);
+    }
+    let i = 0;
+
+    // Goes through each adjacent node that hasnt been visited and breaks down a border
+    (function next() {
+        if (i < cell.adjacents.length) {
+            let c = cell.adjacents[i];
+            if (!c.visited) {
+
+                // setTimeout(setImage, 1000, m, c.row, c.col);
+                setImage(m, c.row, c.col);
+                // removeImage(row, col);
+                
+                solve(m, path, c.row, c.col, function(solved) {
+                    if (solved) {
+                        return true;
+                    } else {
+                        i++;
+                        setTimeout(next, 1000);
+                    }
+                })
+            } else {
+                i++;
+                setTimeout(next, 100);
+            }
+        } else {
+            // All adjacent nodes have been visited, backtrack to find more unvisited nodes
+            let popped = path.pop();
+            removeImage(popped.row, popped.col)
+            setTimeout(callback, 100, false);
+        }
+    })();
+}
+
+
+function maze (width, height, rows, cols) {
+    
+    // Dimensions of the maze
+    this.width = width;
+    this.height = height;
+
+    // Number of rows and columns
+    this.rows = rows; 
+    this.cols = cols;
+
+    // Dimensions of each cell in the maze
+    this.cellWidth = this.width/rows;
+    this.cellHeight = this.height/cols;
+
+    // All cells in the
+    this.cells = [];
+
+    // Initialize the cells in the maze
+    for (let row =0; row<this.rows; row++) {
+        let c = [];
+        for (let col=0; col<this.cols; col++) {
+            c.push(new cell(row, col));
+        } 
+        this.cells.push(c);
+    }
+
+    // Let all cells know of their adjacent cells
+    for (let row=0; row<this.rows; row++) {
+        for (let col=0; col<this.cols; col++) {
+            let cell = this.cells[row][col];
+            let adjacents = cell.getAdjacents(this.rows, this.cols);
+            for (let a=0; a<adjacents.length; a++) {
+                cell.adjacents.push(this.cells[adjacents[a][0]][adjacents[a][1]]);
+            }
+            cell.shuffleAdjacents();
+        }
+    }
+    
+    // Create a maze
+    this.initializeMaze = function(path, row, col) {
+        let cell = this.cells[row][col];
+
+        // Array of the nodes that have been visited
+        path.push(cell);
+        cell.visited = true;
+
+        // Goes through each adjacent node that hasnt been visited and breaks down a border
+        for (let i=0; i<cell.adjacents.length; i++) {
+            let c = cell.adjacents[i];
+            if (!cell.adjacents[i].visited) {
+                this.breakWall(cell, c);
+                this.initializeMaze(path, c.row, c.col);
+            }
+        }
+        // All adjacent nodes have been visited, backtrack to find more unvisited nodes
+        path.pop();
+        return;
+    }
+
+    // Get rid of a border
+    this.breakWall = function(currNode, nextNode) {
+        if (currNode.row - nextNode.row < 0) {
+            // Move down
+            currNode.border[1] = false;
+            nextNode.border[0] = false;
+        } 
+        else if (currNode.row - nextNode.row > 0) {
+            // Move up
+            currNode.border[0] = false;
+            nextNode.border[1] = false;
+
+        } 
+        else if (currNode.col - nextNode.col < 0) {
+            // Move right
+            currNode.border[3] = false;
+            nextNode.border[2] = false;
+
+        } 
+        else if (currNode.col - nextNode.col > 0) {
+            // Move left
+            currNode.border[2] = false;
+            nextNode.border[3] = false;
+        }
+    }
+
+    // Initialize maze and add starting and ending nodes
+    this.startMaze = function() {
+        let row = Math.floor(Math.random() *this.rows);
+        let col = Math.floor(Math.random() *this.cols);
+        this.initializeMaze([], row, col);
+
+        let goalRow = Math.floor(Math.random() *this.rows);
+        let goalCol = Math.floor(Math.random() *this.cols);
+
+        // Initialize random locations for start and goal nodes
+        this.cells[row][col].image = sparty;
+        this.cells[goalRow][goalCol].image = finish;
+
+    }
+
+    this.unVisit = function() {
+        for (let row=0; row<this.rows; row++) {
+            for (let col=0; col<this.cols; col++) {
+                this.cells[row][col].visited = false;
+            }
+        }
+    }
+}
+
+
+function cell(row, col) {
+    // Row, col index in the board
+    this.row = row;
+    this.col = col;
+
+    this.image = null;
+    this.goal = false;
+
+    this.visited = false;
+    // top, bottom, left, right
+    this.border = [true, true, true, true];
+    
+    // Adjacent cells
+    this.adjacents = [];
+
+    // Get the adjacent row, col indices 
+    this.getAdjacents = function(rows, cols) {
+        let indices = [];
+
+        if (this.row != 0) {
+            indices.push([this.row-1, this.col]);
+        }
+        if (this.row != rows-1) {
+            indices.push([this.row+1, this.col]);
+        }
+        if (this.col != 0) {
+            indices.push([this.row, this.col-1]);
+        }
+        if (this.col != cols-1) {
+            indices.push([this.row, this.col+1]);
+        }
+        
+        return indices;
+    }
+
+    // Shuffle the adjacents list to randomize border removal
+    this.shuffleAdjacents = function() {
+        let shuffled = [];
+
+        while (this.adjacents.length > 0) {
+            let index = Math.floor(Math.random() * this.adjacents.length);
+            shuffled.push(this.adjacents[index]);
+            this.adjacents.splice(index, 1);
+        }
+
+        this.adjacents = shuffled;
+    } 
+}

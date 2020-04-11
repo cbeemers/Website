@@ -26,7 +26,7 @@ from pages.views import (
     brickbreak_view,
     signup_view,
     sudoku_view,
-
+    maze_view
 
 )
 
@@ -53,6 +53,7 @@ urlpatterns = [
     path('money/', money_view, name='money-view'),
     path('contact/', contact_view, name='contact-view'),
     path('games/sudoku', sudoku_view, name='sudoku-view'),
+    path('games/maze', maze_view, name='maze-view'),
     # path('scrape', scrape_view, name='scrape-view'),
 
 ]

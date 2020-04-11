@@ -1,0 +1,56 @@
+
+
+.board {
+
+    display: inline-block;
+    border: 2px solid black;
+}
+
+body {
+    text-align: center;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+    border-radius: 10%;
+    outline: none;
+
+}
+
+button:hover {
+    background-color: grey;
+}
+
+.buttons{
+    width: 450px;
+    display: inline-block;
+}
+
+.cell {
+    padding: 0;
+    margin: 0;
+    border: none;
+    text-align: center;
+}
+
+/* h1 {
+    padding: 40px 0;
+} */
+
+p {
+    padding: 0 40px;
+}
+
+.parent {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+}
+

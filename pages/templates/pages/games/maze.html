@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    {% load static %}
+    <head>
+        <meta charset="utf-8">
+        <title>Maze</title>
+        <link rel="stylesheet" href="{% static 'pages/games/maze/maze.css' %}" type=text/css>
+        <link rel="stylesheet" href="{% static 'pages/main.css' %}?" type=text/css>
+        <script>
+            var finish = "{% static 'pages/games/maze/img/finish.png' %}"
+            var sparty = "{% static 'pages/games/maze/img/sparty.png' %}"
+        </script>
+    </head>
+
+    <body>
+        <header class='header-border'>
+            <nav class='main-nav'>
+                <ul>
+                    <li><a href="{% url 'home-view' %}">HOME</a></li>
+                </ul>
+            </nav>
+            <h1>Maze!</h1>
+            <p> This maze was created using a recursive backtracking algorithm that kept track of the path of visited nodes and went through each
+                node's adjacents to remove a border. If all of the adjacent nodes were visited, it would backtrack in the path and continue going through nodes
+                until all were visited. Solving was implemented in just about the same way but used a callback function for the animation 
+                as an argument that would specify if the goal was reached.
+            </p>
+        </header>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="{% static 'pages/games/maze/maze.js' %}"></script>
+    </body>
+</html>

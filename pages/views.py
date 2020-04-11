@@ -81,3 +81,6 @@ def signup_view(request):
 def sudoku_view(request):
     context = {}
     return render(request, 'pages/games/sudoku.html', context)
+
+def maze_view(request):
+    return render(request, 'pages/games/maze.html', {})
