@@ -1,25 +1,71 @@
 
 // The maze to display
-var m = new maze(500, 500, 10, 10);
+var m;
 // Starting location containing sparty to move from
 var start = {};
-
+var body = document.getElementsByTagName("body")[0]; 
 
 $(document).ready (function () {
 
-    m.startMaze();
-
-    let table = document.createElement('div'); table.className = "board";
-    let body = document.getElementsByTagName("body")[0]; 
     $('body').height(innerHeight);
+
+    //Create the form that will allow a user to create the maze size
+    let form = document.createElement('form');
+    
+    let row_input = document.createElement('input'); row_input.type = "text"; row_input.placeholder = 10; row_input.id = "row";
+    let col_input = document.createElement('input'); col_input.type = "text"; col_input.placeholder = 10; col_input.id = "col";
+    $('row_input').attr('id', 'row');
+    $('col_input').attr('id', 'col');
+    
+    let form_p = document.createElement('p');
+    let row_label = document.createElement('label'); row_label.for = "row"; row_label.innerHTML = "Rows: "
+    let col_label = document.createElement('label'); col_label.for = "col"; col_label.innerHTML = "Cols: "
+    
+    let button_p = document.createElement('p');
+    let submit = document.createElement('input'); submit.type = 'submit'; submit.value = "Create"; submit.id = "create";
+
+    button_p.appendChild(submit);
+    
+    form_p.appendChild(row_label); form_p.appendChild(row_input); form_p.appendChild(col_label); form_p.appendChild(col_input);
+    
+    let message = document.createElement('p'); message.innerHTML = "&nbsp";
+
+    form.appendChild(form_p); form.appendChild(message); form.appendChild(button_p); 
+    body.appendChild(form);
+
+    newMaze(10, 10);
+});
+
+$(function () {
+
+    $('#create').on("click", function(event) {
+        event.preventDefault();
+        let rows_input = document.getElementById('row').value;
+        let cols_input = document.getElementById('col').value;
+        
+        if (rows_input != "" && cols_input != "") {
+            if (5<rows_input<50 && 5<cols_input<50) {
+                // m.rows = rows_input;
+            }
+        }
+    });
+});
+
+function removeMaze() {
+    body.removeChild(document.getElementsByClassName("board")[0]);
+    body.removeChild(document.getElementsByClassName("parent")[0]);
+}
+
+function newMaze(rows, cols) {
+    m = new maze(500, 500, rows, cols);
+
+    m.startMaze();
+    let table = document.createElement('div'); table.className = "board";
 
     $('.board').width(m.width + "px");
     $('.board').height(m.height + "px");
 
-    let p = document.createElement('div'); p.className = 'parent';
-    p.appendChild(table);
-
-    body.append(p);
+    body.append(table);
 
     for (let row=0; row<m.rows; row++) {
         // Create the row
@@ -59,11 +105,9 @@ $(document).ready (function () {
         table.appendChild(tr);
     }
 
-    // console.log(start);
-
     // Make the button to solve the maze
-    let b = document.createElement('button'); b.innerHTML = "Solve"; b.className = "solve";
-    let b2 = document.createElement('button'); b2.innerHTML = "New";  b2.className = "new";
+    let b = document.createElement('button'); b.innerHTML = "Solve"; b.id = "solve"; //b.id = "solve";
+    let b2 = document.createElement('button'); b2.innerHTML = "New";  b2.id = "new"//b2.className = "new";
     let buttons = document.createElement('div'); buttons.className = 'buttons'; buttons.appendChild(b); buttons.appendChild(b2);
     let parent = document.createElement('div'); parent.className = 'parent'; parent.appendChild(buttons); 
     body.appendChild(parent);
@@ -74,22 +118,20 @@ $(document).ready (function () {
     $('.row').width(m.width + "px");
     $('.row').height(m.cellHeight + "px");
 
-    // Unvisit all cells so the maze can be solved
-    m.unVisit();
-});
-
-$(function () {
-    $('.solve').on("click", function() {
+    $('#solve').on("click", function() {
         m.unVisit();
-        // solve(m, [], start['row'], start['col']);
         solve(m, [], start['row'], start['col'], function(solve=false){ return solve; });
 
     });
 
-    $('.new').on("click", function () {
-        
+    $('#new').on("click", function () {
+        removeMaze(body);
+        newMaze(10, 10);
     });
-});
+
+    // Unvisit all cells so the maze can be solved
+    m.unVisit();
+}
 
 function setImage(m, row, col) {
 
@@ -110,6 +152,8 @@ function removeImage(row, col) {
 }
 
 function solve(m, path, row, col, callback) {
+    console.log(m);
+    // console.log(row, col)
     
     let cell = m.cells[row][col];
     // cell.shuffleAdjacents();

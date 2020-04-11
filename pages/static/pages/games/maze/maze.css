@@ -34,6 +34,20 @@ button:hover {
     text-align: center;
 }
 
+form {
+    padding-bottom: 20px;
+}
+
+input[type="submit"] {
+    width: 5em;
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 3em;
+    text-align: center;
+}
+
 /* h1 {
     padding: 40px 0;
 } */
