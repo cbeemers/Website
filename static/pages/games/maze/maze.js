@@ -4,6 +4,8 @@ var m;
 // Starting location containing sparty to move from
 var start = {};
 var body = document.getElementsByTagName("body")[0]; 
+var rows = 10;
+var cols = 10;
 
 $(document).ready (function () {
 
@@ -14,8 +16,6 @@ $(document).ready (function () {
     
     let row_input = document.createElement('input'); row_input.type = "text"; row_input.placeholder = 10; row_input.id = "row";
     let col_input = document.createElement('input'); col_input.type = "text"; col_input.placeholder = 10; col_input.id = "col";
-    $('row_input').attr('id', 'row');
-    $('col_input').attr('id', 'col');
     
     let form_p = document.createElement('p');
     let row_label = document.createElement('label'); row_label.for = "row"; row_label.innerHTML = "Rows: "
@@ -28,7 +28,7 @@ $(document).ready (function () {
     
     form_p.appendChild(row_label); form_p.appendChild(row_input); form_p.appendChild(col_label); form_p.appendChild(col_input);
     
-    let message = document.createElement('p'); message.innerHTML = "&nbsp";
+    let message = document.createElement('p'); message.innerHTML = "&nbsp"; message.id = "message";
 
     form.appendChild(form_p); form.appendChild(message); form.appendChild(button_p); 
     body.appendChild(form);
@@ -42,10 +42,19 @@ $(function () {
         event.preventDefault();
         let rows_input = document.getElementById('row').value;
         let cols_input = document.getElementById('col').value;
-        
         if (rows_input != "" && cols_input != "") {
-            if (5<rows_input<50 && 5<cols_input<50) {
-                // m.rows = rows_input;
+            if (!isNaN(rows_input) && !isNaN(cols_input)) {
+                // rows_input = parseInt(rows_input);
+                // cols_input = parseInt(cols_input);
+                if (rows_input>5 && rows_input < 50 && cols_input>5 && cols_input < 50) {
+                    rows = rows_input; cols = cols_input;
+                    document.getElementById('message').innerHTML = "";
+                    newMaze(rows_input, cols_input);
+                } else {
+                    document.getElementById('message').innerHTML = "Input must be between 5 and 50.";
+                }
+            } else {
+                document.getElementById('message').innerHTML = "Input must be a number.";
             }
         }
     });
@@ -57,6 +66,9 @@ function removeMaze() {
 }
 
 function newMaze(rows, cols) {
+    if (document.getElementsByClassName("board")[0] != undefined) {
+        removeMaze();
+    }
     m = new maze(500, 500, rows, cols);
 
     m.startMaze();
@@ -125,8 +137,8 @@ function newMaze(rows, cols) {
     });
 
     $('#new').on("click", function () {
-        removeMaze(body);
-        newMaze(10, 10);
+        // removeMaze(body);
+        newMaze(rows, cols);
     });
 
     // Unvisit all cells so the maze can be solved
@@ -152,11 +164,8 @@ function removeImage(row, col) {
 }
 
 function solve(m, path, row, col, callback) {
-    console.log(m);
-    // console.log(row, col)
     
     let cell = m.cells[row][col];
-    // cell.shuffleAdjacents();
 
     // Array of the nodes that have been visited
     path.push(cell);
