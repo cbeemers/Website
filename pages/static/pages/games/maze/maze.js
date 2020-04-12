@@ -4,6 +4,7 @@ var m;
 // Starting location containing sparty to move from
 var start = {};
 var body = document.getElementsByTagName("body")[0]; 
+// Default size of maze
 var rows = 10;
 var cols = 10;
 
@@ -37,38 +38,44 @@ $(document).ready (function () {
 });
 
 $(function () {
-
+    // Gives user control of number of rows and cols
     $('#create').on("click", function(event) {
         event.preventDefault();
+
         let rows_input = document.getElementById('row').value;
         let cols_input = document.getElementById('col').value;
+
         if (rows_input != "" && cols_input != "") {
             if (!isNaN(rows_input) && !isNaN(cols_input)) {
-                // rows_input = parseInt(rows_input);
-                // cols_input = parseInt(cols_input);
-                if (rows_input>5 && rows_input < 50 && cols_input>5 && cols_input < 50) {
+                if (rows_input >= 5 && rows_input < 50 && cols_input >= 5 && cols_input < 50) {
+                    // Reset default dimensions
                     rows = rows_input; cols = cols_input;
                     document.getElementById('message').innerHTML = "";
                     newMaze(rows_input, cols_input);
-                } else {
+                } 
+                else {
                     document.getElementById('message').innerHTML = "Input must be between 5 and 50.";
                 }
-            } else {
+            } 
+            else {
                 document.getElementById('message').innerHTML = "Input must be a number.";
             }
         }
     });
 });
 
+// Remove maze and buttons below
 function removeMaze() {
     body.removeChild(document.getElementsByClassName("board")[0]);
     body.removeChild(document.getElementsByClassName("parent")[0]);
 }
 
+// Creates the maze and appends it to the html
 function newMaze(rows, cols) {
     if (document.getElementsByClassName("board")[0] != undefined) {
         removeMaze();
     }
+
     m = new maze(500, 500, rows, cols);
 
     m.startMaze();
@@ -90,14 +97,18 @@ function newMaze(rows, cols) {
             button.className = "cell";
             let cell = m.cells[row][col];
             if (cell.image != null) {
-                img = document.createElement('img'); img.src = cell.image; img.width=m.cellWidth; img.height=m.cellHeight;
-                button.appendChild(img);
                 if (cell.image == sparty) {
                     // Set the location sparty is starting at
                     start = {
                         "row" : row,
                         "col" : col
                     };
+                    // Mark the start with a color so you know where the end path started
+                    button.style.backgroundColor = "green";
+                }
+                else {
+                    img = document.createElement('img'); img.src = cell.image; img.width=m.cellWidth; img.height=m.cellHeight;
+                    button.appendChild(img);
                 }
             }
 
@@ -130,6 +141,7 @@ function newMaze(rows, cols) {
     $('.row').width(m.width + "px");
     $('.row').height(m.cellHeight + "px");
 
+    // Create the onclick listeners every time a maze is initialized
     $('#solve').on("click", function() {
         m.unVisit();
         solve(m, [], start['row'], start['col'], function(solve=false){ return solve; });
@@ -137,7 +149,6 @@ function newMaze(rows, cols) {
     });
 
     $('#new').on("click", function () {
-        // removeMaze(body);
         newMaze(rows, cols);
     });
 
@@ -145,6 +156,7 @@ function newMaze(rows, cols) {
     m.unVisit();
 }
 
+// Sets the image to a cell div
 function setImage(m, row, col) {
 
     let board = document.getElementsByClassName('board')[0];
@@ -152,15 +164,20 @@ function setImage(m, row, col) {
 
     let img = document.createElement('img'); img.src = sparty; img.width = m.cellWidth; img.height=m.cellHeight;
     
-    c.appendChild(img);
+    c.style.backgroundColor = "red";
+    // c.appendChild(img);
 } 
 
+// Remove an image from a cell div
 function removeImage(row, col) {
     let board = document.getElementsByClassName('board')[0];
     let c = board.children[row].children[col];
     if (c.firstChild != null) {
         c.removeChild(c.firstChild);
+        c.style.backgroundColor = "blue";
+        return;
     }
+    c.style.backgroundColor = "grey";
 }
 
 function solve(m, path, row, col, callback) {
@@ -173,6 +190,7 @@ function solve(m, path, row, col, callback) {
 
     if (cell.image == finish) {
         removeImage(row,col);
+        setImage(row, col)
         return callback(true);
     }
     let i = 0;
@@ -187,12 +205,13 @@ function solve(m, path, row, col, callback) {
                 setImage(m, c.row, c.col);
                 // removeImage(row, col);
                 
+                // Callback function triggers timeout for animation
                 solve(m, path, c.row, c.col, function(solved) {
                     if (solved) {
                         return true;
                     } else {
                         i++;
-                        setTimeout(next, 1000);
+                        setTimeout(next, 100);
                     }
                 })
             } else {
@@ -203,7 +222,7 @@ function solve(m, path, row, col, callback) {
             // All adjacent nodes have been visited, backtrack to find more unvisited nodes
             let popped = path.pop();
             removeImage(popped.row, popped.col)
-            setTimeout(callback, 100, false);
+            callback(false);
         }
     })();
 }
@@ -303,6 +322,12 @@ function maze (width, height, rows, cols) {
         let goalRow = Math.floor(Math.random() *this.rows);
         let goalCol = Math.floor(Math.random() *this.cols);
 
+        // Ensure the start and goal are not placed at the same cells
+        while (goalRow == row && goalCol == col) {
+            goalRow = Math.floor(Math.random() *this.rows);
+            goalCol = Math.floor(Math.random() *this.cols);
+        }
+
         // Initialize random locations for start and goal nodes
         this.cells[row][col].image = sparty;
         this.cells[goalRow][goalCol].image = finish;
@@ -325,7 +350,6 @@ function cell(row, col) {
     this.col = col;
 
     this.image = null;
-    this.goal = false;
 
     this.visited = false;
     // top, bottom, left, right
