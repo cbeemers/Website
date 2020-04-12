@@ -248,8 +248,8 @@ function maze (width, height, rows, cols) {
     this.cols = cols;
 
     // Dimensions of each cell in the maze
-    this.cellWidth = this.width/rows;
-    this.cellHeight = this.height/cols;
+    this.cellWidth = this.width/cols;
+    this.cellHeight = this.height/rows;
 
     // All cells in the
     this.cells = [];
