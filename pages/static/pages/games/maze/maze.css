@@ -34,6 +34,19 @@ button:hover {
     text-align: center;
 }
 
+footer {
+    margin: auto;
+}
+
+footer a {
+    margin: auto;
+    font-size: 20px;
+}
+
+.footer a:hover {
+    opacity: .5;
+}
+
 form {
     padding: 20px 0;
 }
@@ -63,7 +76,7 @@ p {
 
 .parent {
     text-align: center;
-    padding-top: 40px;
+    padding: 40px 0;
 }
 
 .row {

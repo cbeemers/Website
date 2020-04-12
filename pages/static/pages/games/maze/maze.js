@@ -64,10 +64,11 @@ $(function () {
     });
 });
 
-// Remove maze and buttons below
+// Removes all html including and below board
 function removeMaze() {
     body.removeChild(document.getElementsByClassName("board")[0]);
     body.removeChild(document.getElementsByClassName("parent")[0]);
+    body.removeChild(document.getElementsByClassName('footer')[0]);
 }
 
 // Creates the maze and appends it to the html
@@ -154,6 +155,14 @@ function newMaze(rows, cols) {
 
     // Unvisit all cells so the maze can be solved
     m.unVisit();
+
+    // Creates the footer for the page
+    let footer = document.createElement('footer'); footer.style.height = "100px"; footer.className = 'footer';
+    let h1 = document.createElement('h1');
+    let a = document.createElement('a'); a.href="https://github.com/cbeemers/Website/blob/master/static/pages/games/maze/maze.js"; a.innerHTML = "Source Code"; a.target = "_blank";
+    // h1.appendChild(a);
+    footer.appendChild(a);
+    body.appendChild(footer);
 }
 
 // Sets the image to a cell div

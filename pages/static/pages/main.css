@@ -116,6 +116,16 @@ body {
     padding-bottom: 20px;
 }
 
+.contact-link {
+    text-decoration: none;
+    display: center;
+    color: white;
+}
+
+.contact-link:hover {
+    color: #cccccc;
+}
+
 .email {
     height: 20px;
     border: solid black 2px;
@@ -132,23 +142,22 @@ figcaption {
 }
 
 .footer {
-    margin: 0;
-    color: white;
     text-align: center;
+    margin: auto;
+    color: white;
     background: #388CD2;
     padding-bottom: 20px;
     padding-top: 10px;
 }
 
-.contact-link {
-    text-decoration: none;
-    display: center;
+footer a {
     color: white;
-
+    font-size: 20px;
+    text-decoration: none;
 }
 
-.footer .contact-link:hover {
-    color: #cccccc;
+.footer a:hover {
+    opacity: .5;
 }
 
 .footer h1 {

@@ -78,6 +78,11 @@ $(document).ready(function() {
     
     body.append(dd);
 
+    let footer = document.createElement('footer'); footer.className = "footer"; footer.style.height="100px";
+    let a = document.createElement('a'); a.href="https://github.com/cbeemers/Website/blob/master/static/pages/games/sudoku/sudoku.js"; a.target="_blank"; a.innerHTML="Source Code";
+    footer.appendChild(a);
+    body.appendChild(footer);
+
     // The solved puzzle
     solve(copy_solution, 0, 0);
 

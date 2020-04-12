@@ -11,6 +11,10 @@ button {
     font-size: 24px;
 }
 
+.buttons {
+    padding-bottom: 20px;
+}
+
 .buttons, .numbers {
     /* padding: 10px; */
     width: 450px;
