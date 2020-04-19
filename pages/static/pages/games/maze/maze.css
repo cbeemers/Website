@@ -38,15 +38,6 @@ footer {
     margin: auto;
 }
 
-footer a {
-    margin: auto;
-    font-size: 20px;
-}
-
-.footer a:hover {
-    opacity: .5;
-}
-
 form {
     padding: 20px 0;
 }
