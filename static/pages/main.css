@@ -4,7 +4,6 @@
     
     display: flex;  
     flex-flow: row wrap;
-    font-weight: bold;
     text-align: center;
     border-bottom: solid black 3px;
 
@@ -212,7 +211,7 @@ footer a {
 
 .lang-align {
     padding: 10px 40px;
-    display:flex;
+    display: flex;
     align-items: center;
 }
 
@@ -221,9 +220,9 @@ footer a {
     font-size: 20px;
 }
 
-.lang p {
+/* .lang p {
     font-size: 20px;
-}
+} */
 
 .last {
     border-bottom: none;
@@ -254,10 +253,6 @@ footer a {
     text-decoration: bold;
 }
 
-/* .main-header nav li {
-
-}  */
-
 .main-nav {
     color:white;
 }
@@ -271,7 +266,6 @@ footer a {
 
 .main-nav a:hover {
     color: #cccccc;
-    /* font-size: 24px; */
 }
 
 .main-nav a {
@@ -322,7 +316,6 @@ nav {
 }
 
 .scrape {
-    /* text-decoration: none; */
     color: black;
 }
 
